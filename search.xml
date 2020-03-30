@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>前端学习记录</title>
-    <url>/2020/03/30/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="前面对选择前端或者后端的时候，最后自己还是选择了前端"><a href="#前面对选择前端或者后端的时候，最后自己还是选择了前端" class="headerlink" title="前面对选择前端或者后端的时候，最后自己还是选择了前端"></a>前面对选择前端或者后端的时候，最后自己还是选择了前端</h3><h3 id="那么为什么让我选择前端呢，因为前端的开发方式吸引着我。"><a href="#那么为什么让我选择前端呢，因为前端的开发方式吸引着我。" class="headerlink" title="那么为什么让我选择前端呢，因为前端的开发方式吸引着我。"></a>那么为什么让我选择前端呢，因为前端的开发方式吸引着我。</h3><h3 id="作为前端开发菜鸟，写下这篇博客记录自己的成长。"><a href="#作为前端开发菜鸟，写下这篇博客记录自己的成长。" class="headerlink" title="作为前端开发菜鸟，写下这篇博客记录自己的成长。"></a>作为前端开发菜鸟，写下这篇博客记录自己的成长。</h3><p><img src="/" class="lazyload" data-src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1119337717,3237173899&fm=15&gp=0.jpg"  alt="image"><br>tags:<br>    - tags</p>
+    <title>前言</title>
+    <url>/2020/05/26/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="前面对选择前端或者后端的时候，最后自己还是选择了前端"><a href="#前面对选择前端或者后端的时候，最后自己还是选择了前端" class="headerlink" title="前面对选择前端或者后端的时候，最后自己还是选择了前端"></a>前面对选择前端或者后端的时候，最后自己还是选择了前端</h3><h3 id="那么为什么让我选择前端呢，因为前端的开发方式吸引着我。"><a href="#那么为什么让我选择前端呢，因为前端的开发方式吸引着我。" class="headerlink" title="那么为什么让我选择前端呢，因为前端的开发方式吸引着我。"></a>那么为什么让我选择前端呢，因为前端的开发方式吸引着我。</h3><h3 id="作为前端开发菜鸟，写下这篇博客记录自己的成长。"><a href="#作为前端开发菜鸟，写下这篇博客记录自己的成长。" class="headerlink" title="作为前端开发菜鸟，写下这篇博客记录自己的成长。"></a>作为前端开发菜鸟，写下这篇博客记录自己的成长。</h3><p><img src="/" class="lazyload" data-src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1119337717,3237173899&fm=15&gp=0.jpg"  alt="image"></p>
 ]]></content>
+      <tags>
+        <tag>web前端</tag>
+        <tag>前言</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
