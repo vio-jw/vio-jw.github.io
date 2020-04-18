@@ -2,6 +2,56 @@
 <search>
   <entry>
     <title>前言</title>
+    <url>/2019/12/27/js%E5%8F%98%E9%87%8F%E3%80%81js%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script><h3 id="变量命名规范"><a href="#变量命名规范" class="headerlink" title="变量命名规范"></a>变量命名规范</h3><ul>
+<li><h6 id="由字母、数字、下划线、美元符号组成"><a href="#由字母、数字、下划线、美元符号组成" class="headerlink" title="由字母、数字、下划线、美元符号组成"></a>由字母、数字、下划线、美元符号组成</h6></li>
+<li><h6 id="严格区分大小写"><a href="#严格区分大小写" class="headerlink" title="严格区分大小写"></a>严格区分大小写</h6></li>
+<li><h6 id="不能以数字开头"><a href="#不能以数字开头" class="headerlink" title="不能以数字开头"></a>不能以数字开头</h6></li>
+<li><h6 id="不能是关键字"><a href="#不能是关键字" class="headerlink" title="不能是关键字"></a>不能是关键字</h6></li>
+<li><h6 id="变量名义必须有意义"><a href="#变量名义必须有意义" class="headerlink" title="变量名义必须有意义"></a>变量名义必须有意义</h6></li>
+<li><h6 id="遵守驼峰命名法。首字母小写，后面的首字母需要大写"><a href="#遵守驼峰命名法。首字母小写，后面的首字母需要大写" class="headerlink" title="遵守驼峰命名法。首字母小写，后面的首字母需要大写"></a>遵守驼峰命名法。首字母小写，后面的首字母需要大写</h6></li>
+<li><h6 id="推荐翻译工具：有道、爱词霸"><a href="#推荐翻译工具：有道、爱词霸" class="headerlink" title="推荐翻译工具：有道、爱词霸"></a>推荐翻译工具：有道、爱词霸</h6></li>
+</ul>
+<h5 id="在JS中加0为八进制"><a href="#在JS中加0为八进制" class="headerlink" title="在JS中加0为八进制"></a>在JS中加0为八进制</h5><h5 id="十六进制的前面加OX"><a href="#十六进制的前面加OX" class="headerlink" title="十六进制的前面加OX"></a>十六进制的前面加OX</h5><p>infinity 代表无穷大，大于任何数值</p>
+<p>-infinity代表无穷小，小于任何数</p>
+<p>NAN Not a Number 代表一个非数值</p>
+<p>isNAN（）这个方法用来判断非数字，如果是数字返回false，如果不是数字返回true</p>
+<h4 id="字符型转换为数字型"><a href="#字符型转换为数字型" class="headerlink" title="字符型转换为数字型"></a>字符型转换为数字型</h4><p>parseInt(string)</p>
+<p>parseFloat(string)</p>
+<p>Number()</p>
+<p>==JS隐式转换利用算数运算符隐式转换为数值型==</p>
+<p>例如 - * /</p>
+<h4 id="数据类型转换为布尔类型"><a href="#数据类型转换为布尔类型" class="headerlink" title="数据类型转换为布尔类型"></a>数据类型转换为布尔类型</h4><ol>
+<li><p>代表空、否定的值会被转换为false.如“0”、NaN、NULL、undefined其余值都会被转换为true.</p>
+</li>
+<li><p>浮点数、算数运算里面会有问题.</p>
+</li>
+<li><p>前置自增和后；置自增如果单独使用效果是一样的.</p>
+</li>
+<li><p>后置自增口诀：先返回原值后自加1.</p>
+</li>
+<li><p>后置自增口诀：先自加1，后返回值.</p>
+</li>
+</ol>
+<p>比较会返回一个布尔值.</p>
+<p>==默认转换数据类型（判断两边值是否相等）.</p>
+<ol>
+<li>我们程序里面等于符号是==默认转换数据类型，会把字符串的数据转换为数字型，只要求值相等就可以.</li>
+<li>===全等要求两侧的值还有数据类型完全一致就可以.（判断两边的值和数据类型是否完全相同）.</li>
+</ol>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>web前端</tag>
+        <tag>变量命名规范</tag>
+        <tag>字符型转换为数字型</tag>
+        <tag>数据类型转换为布尔类型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前言</title>
     <url>/2019/12/26/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="在有一些基础的编程经验上，对web前端进行深入学习"><a href="#在有一些基础的编程经验上，对web前端进行深入学习" class="headerlink" title="在有一些基础的编程经验上，对web前端进行深入学习"></a>在有一些基础的编程经验上，对web前端进行深入学习</h3><h3 id="学海无涯，让自己坚持下去"><a href="#学海无涯，让自己坚持下去" class="headerlink" title="学海无涯，让自己坚持下去"></a>学海无涯，让自己坚持下去</h3><h3 id="作为web前端开发，写下这篇博客记录自己的成长"><a href="#作为web前端开发，写下这篇博客记录自己的成长" class="headerlink" title="作为web前端开发，写下这篇博客记录自己的成长"></a>作为web前端开发，写下这篇博客记录自己的成长</h3><p><img src="/" class="lazyload" data-src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1119337717,3237173899&fm=15&gp=0.jpg"  alt="image"></p>
 ]]></content>
