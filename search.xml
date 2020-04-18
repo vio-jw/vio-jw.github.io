@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>前言</title>
+    <title>变量命名规范</title>
     <url>/2019/12/27/js%E5%8F%98%E9%87%8F%E3%80%81js%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script><h3 id="变量命名规范"><a href="#变量命名规范" class="headerlink" title="变量命名规范"></a>变量命名规范</h3><ul>
 <li><h6 id="由字母、数字、下划线、美元符号组成"><a href="#由字母、数字、下划线、美元符号组成" class="headerlink" title="由字母、数字、下划线、美元符号组成"></a>由字母、数字、下划线、美元符号组成</h6></li>
