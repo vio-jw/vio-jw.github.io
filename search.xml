@@ -1,6 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>对象</title>
+    <url>/2019/12/30/%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script><h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>对象是一个具体的事物，是由属性和方法组成的。</p>
+<p><strong>属性</strong></p>
+<blockquote>
+<p>事物的特征，在对象中用属性来表示（常用名词）</p>
+</blockquote>
+<p><strong>方法</strong></p>
+<blockquote>
+<p>事物的行为，在对象中用方法来表示（常用动词）</p>
+</blockquote>
+<hr>
+<h4 id="创建对象的三种方法"><a href="#创建对象的三种方法" class="headerlink" title="创建对象的三种方法"></a>创建对象的三种方法</h4><ol>
+<li>利用字面量创建对象<blockquote>
+<p>对象字面量{ }：花括号里面包含了表达式这个具体事物（对象）的属性和方法。</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var obj &#x3D;&#123; &#125;;&#x2F;&#x2F;创建了一个空的对象。</span><br><span class="line">&#x2F;&#x2F;1.里面的属性或者方法采用键值对的形式  健属性名：值属性值</span><br><span class="line">&#x2F;&#x2F;2.多个属性和方法中间采用逗号隔开的。</span><br><span class="line">&#x2F;&#x2F;3.方法冒号后面跟着的是一个匿名函数的。</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>利用new object创建对象</p>
+<blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var obj &#x3D;new object();</span><br><span class="line">obj.uname &#x3D; &#39;张三&#39;;</span><br><span class="line">obj.age &#x3D; 18;</span><br><span class="line">obj.sex &#x3D; &#39;男&#39;;</span><br><span class="line">obj.SayHi &#x3D; function()&#123;</span><br><span class="line">    console.log(&#39;hi~&#39;);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 1.利用等号赋值的方法，添加对象的属性和方法。</span><br><span class="line">&#x2F;&#x2F; 2.每个属性和方法之间用分号结束。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>利用构造函数创建对象</p>
+<blockquote>
+<p>我们为什么需要使用构造函数，就是因为我们前面两种创建对象的方式一次只能创建一个对象，因此我们可以利用函数的方法，重复这些相同的代码，我们就把这个函数称为构造函数。</p>
+</blockquote>
+</li>
+</ol>
+<p>构造函数语法格式：</p>
+<blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function 构造函数名()&#123;</span><br><span class="line">    this.属性 &#x3D; 值;</span><br><span class="line">    this.方法 &#x3D; function()&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用构造函数：new 构造函数名();</p>
+<p>案例：</p>
+<blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function Star(uname,age,sex)&#123;</span><br><span class="line">    this.name &#x3D; unmae;</span><br><span class="line">    this.age &#x3D; age;</span><br><span class="line">    this.sex &#x3D; sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nes Star(&#39;刘德华&#39;,18,&#39;男&#39;);</span><br><span class="line">&#x2F;&#x2F;1.构造函数名字首字母要大写.</span><br><span class="line">&#x2F;&#x2F;2.构造函数不需要retun就可以返回结果.</span><br><span class="line">&#x2F;&#x2F;3.调用构造函数必须使用new.</span><br><span class="line">&#x2F;&#x2F;4.只要new Star()调用函数就创建一个对象.</span><br><span class="line">&#x2F;&#x2F;5.构造函数的属性和方法前面必须添加this.</span><br></pre></td></tr></table></figure>
+<p>构造函数和对象的相互联系</p>
+<ol>
+<li>构造函数：它类似于Java语言里面的类class（泛指的某一大类）.</li>
+<li>对象：特指一个具体的事物.</li>
+<li>利用构造函数创建对象的过程我们也称为对象的实例化.</li>
+</ol>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>web前端</tag>
+        <tag>对象</tag>
+        <tag>创建对象的三种方法</tag>
+        <tag>构造函数和对象的相互联系</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>new关键字</title>
+    <url>/2019/12/30/new%E5%85%B3%E9%94%AE%E5%AD%97/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script><h4 id="new关键字"><a href="#new关键字" class="headerlink" title="new关键字"></a>new关键字</h4><p>1.new构造函数可以在内存中创建一个空的对象</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function Star(uname,age,sex)&#123;</span><br><span class="line">    this.name &#x3D; unmae;</span><br><span class="line">    this.age &#x3D; age;</span><br><span class="line">    this.sex &#x3D; sex;</span><br><span class="line">&#125;</span><br><span class="line">var ldh &#x3D; new Star(&#39;刘&#39;,18,&#39;男&#39;);</span><br></pre></td></tr></table></figure>
+<p>2.this就会指向刚刚创建的空对象。</p>
+<p>3.执行构造函数里面的代码，给这个空对象添加属性和方法.</p>
+<p>4.返回这个对象（new的作用），所以构造函数里面不需要return.</p>
+<h5 id="遍历对象"><a href="#遍历对象" class="headerlink" title="遍历对象"></a>遍历对象</h5><p>因为属性是无序的，所以无法使用for循环</p>
+<blockquote>
+<p>for …in语句用于对数组或者对象（最合适的）的属性进行循环操作.</p>
+</blockquote>
+<p>使用方法</p>
+<blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for(变量 in 对象)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">例子：</span><br><span class="line">var obj &#x3D; &#123;</span><br><span class="line">    name : &#39;ldh&#39;;</span><br><span class="line">    gae : 18;</span><br><span class="line">    sex : &#39;男&#39;</span><br><span class="line">&#125;</span><br><span class="line">for(var K in obj)&#123;</span><br><span class="line">    consloe.log(obj[K]); &#x2F;&#x2F;对象名[变量],obj[K]得到是属性值</span><br><span class="line">    &#x2F;&#x2F;我们使用for...in 里面的变量我们喜欢写K或者Key</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>web前端</tag>
+        <tag>new关键字</tag>
+        <tag>遍历对象</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>变量作用域</title>
+    <url>/2019/12/29/%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script><ol>
+<li>全局变量在代码的任何位置都可以使用</li>
+<li>特殊情况下，在函数内不使用var声明的变量也是全局变量（不建议使用）.</li>
+</ol>
+<p>局部变量：形参可以视为局部变量.</p>
+<p>js也是在ES6的时候新增的块级作用域{  }.</p>
+<h4 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h4><ol>
+<li>只要是代码，就至少有一个作用域.</li>
+<li>写在函数内部的局部作用域.</li>
+<li>如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域.</li>
+<li>根据在内部函数可以访问外部函数变量的这种机制，用链式查找决定哪些数据能被内部函数访问，就称作作用域链，预解析运行、JS分为预解析、代码执行.</li>
+</ol>
+<ul>
+<li>预解析JS引擎会把JS里面所有 var还有function提升到当前作用域的最前面.<h5 id="预解析分为变量预解析（变量提升）-（函数提升）"><a href="#预解析分为变量预解析（变量提升）-（函数提升）" class="headerlink" title="- 预解析分为变量预解析（变量提升）..（函数提升）"></a>- 预解析分为变量预解析（变量提升）..（函数提升）</h5></li>
+</ul>
+<ol>
+<li>变量提升，把所有的变量声明提升到当前的作用域最前面.</li>
+<li>函数提升，把所有函数声明提升到当前，不提升赋值操作，作用域的最前面，不调用函数.</li>
+</ol>
+<p>案例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f1();</span><br><span class="line">console.log(c);</span><br><span class="line">console.log(b);</span><br><span class="line">console.log(a);</span><br><span class="line">function f1()&#123;</span><br><span class="line">    var a&#x3D;b&#x3D;c&#x3D;9;</span><br><span class="line">    console.log(a);</span><br><span class="line">    console.log(b);</span><br><span class="line">    console.log(c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>var a=b=c=9;   相当于var a=9; b=9;c=9;(没有var声明当全局变量看)</p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>web前端</tag>
+        <tag>作用域链</tag>
+        <tag>预解析分为变量预解析（变量提升）..（函数提升）</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>短路运算</title>
+    <url>/2019/12/28/%E9%80%BB%E8%BE%91%E4%B8%AD%E6%96%AD%EF%BC%8C%E5%BE%AA%E7%8E%AF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script><h4 id="短路运算（逻辑判断）"><a href="#短路运算（逻辑判断）" class="headerlink" title="短路运算（逻辑判断）"></a>短路运算（逻辑判断）</h4><p>短路运算的原理：当有多个表达式（值）时，左边的表达式值可以确定结果时，就不再继续运算右边的表达式的值：</p>
+<html>
+<!--在这里插入内容-->
+<ol>
+<li>逻辑与</li>
+语法：表达式为真，则返回值表达式2
+
+<p>如果第一个表达式为真，则返回表达式2</p>
+<p>如果第一个表达式为假，则返回表达式1</p>
+<li>逻辑或短路运算</li>
+如果表达式1为真，则返回表达式1，如果表达式1为假，则返回表达式2
+
+<p>逻辑与和逻辑或优先级</p>
+<p>先算与后算或</p>
+</ol>
+</html>
+
+<h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><ol>
+<li>首先执行里面的计算器变量 var i = 1.但是这句话在for里面只执行一次 index.</li>
+<li>去 i&lt;=100 求判断是否满足条件，如果满足条件，就去执行循环体,不满足条件退出循环.</li>
+<li>最后去执行 i++. i++是单独写的代码，递增，第一轮结束.</li>
+<li>接着去执行 i &lt;= 100 如果满足条件，就去执行循环体，不满足条件退出循环第二轮.</li>
+</ol>
+<h4 id="断点调试方法"><a href="#断点调试方法" class="headerlink" title="断点调试方法"></a>断点调试方法</h4><p>for 循环可以重复执行不同的代码，因为我们有计数器变量 i 的存在，i 每次循环值都会变化.</p>
+<p>外层控制行数，内层控制列数</p>
+<p>双重for循环，外层循环一次，内层for循环全部.</p>
+<p>for循环是循环条件和数字直接相关的循环.</p>
+<h4 id="函数-arguments的使用"><a href="#函数-arguments的使用" class="headerlink" title="函数 arguments的使用"></a>函数 arguments的使用</h4><p>当不确定有多少参数传递的时候，可以用argments来获取.在Javascript中，arguments事实际上它是当前函数的一个内置对象，所有函数都内置了一个arguments对象，arguments对象中存储有了传递的所有实参.</p>
+<p>arguments里面存储了所有传递过来的实参.</p>
+<p>//伪数组，并不是真正意义上的数组.</p>
+<p>//<html></p>
+<!--在这里插入内容-->
+<ol>
+<li>具有数组的length属性</li>
+<li>按照索引的方式进行存储的</li>
+<li>它没有真正数组的一些方法，pop(),push().</li>
+<li>只有函数才内置好了arguments对象（匿名函数）</li>
+</ol>
+</html>
+
+<p>函数的2种声明方式</p>
+<ol>
+<li>利用函数关键字自定义命名函数</li>
+<li>函数表达式：var 变量名 = function(){  };</li>
+</ol>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>web前端</tag>
+        <tag>逻辑判断</tag>
+        <tag>循环</tag>
+        <tag>断点调试方法</tag>
+        <tag>函数 arguments的使用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>变量命名规范</title>
     <url>/2019/12/27/js%E5%8F%98%E9%87%8F%E3%80%81js%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script><h3 id="变量命名规范"><a href="#变量命名规范" class="headerlink" title="变量命名规范"></a>变量命名规范</h3><ul>
