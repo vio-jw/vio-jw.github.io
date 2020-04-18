@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>内置对象</title>
+    <url>/2020/04/18/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script><hr>
+<p>title: 内置函数<br>date: 2019-1-1 13:12:57<br>categories:</p>
+<ul>
+<li>web前端<br>tags:</li>
+<li>web前端</li>
+<li>内置对象</li>
+<li>创建对象的三种方法</li>
+<li>构造函数和对象的相互联系</li>
+</ul>
+<hr>
+<h4 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h4>]]></content>
+  </entry>
+  <entry>
     <title>对象</title>
     <url>/2019/12/30/%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script><h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>对象是一个具体的事物，是由属性和方法组成的。</p>
