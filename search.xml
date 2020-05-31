@@ -1008,4 +1008,91 @@
         <tag>base标签</tag>
       </tags>
   </entry>
+  <entry>
+    <title>web标准</title>
+    <url>/2019/12/02/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h4 id="web标准"><a href="#web标准" class="headerlink" title="web标准"></a>web标准</h4><h5 id="常用浏览器内核"><a href="#常用浏览器内核" class="headerlink" title="常用浏览器内核"></a>常用浏览器内核</h5><table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th>内核</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IE</td>
+<td>Trident</td>
+<td>IE、猎豹安全、360极速浏览器、百度浏览器</td>
+</tr>
+<tr>
+<td>firefox</td>
+<td>Gecko</td>
+<td>可惜这几年已经没落了，打开速度极慢、升级频繁、不友好的flash</td>
+</tr>
+<tr>
+<td>safari</td>
+<td>webkit</td>
+<td>现在很多人错误地把叫做chrome内核（即使现在chrome已经是blink了）</td>
+</tr>
+<tr>
+<td>chrome</td>
+<td>chromium/Blink</td>
+<td>在Chromium项目中研发Blink渲染引擎，内置于Chrome浏览器之中。Blink其实Webkit的分支。大部分国产浏览器最新版都采用Blink内核，二次开发</td>
+</tr>
+<tr>
+<td>OPera</td>
+<td>Blink</td>
+<td>现在跟随chrome采用blink内核</td>
+</tr>
+</tbody></table>
+<h5 id="web标准-1"><a href="#web标准-1" class="headerlink" title="web标准"></a>web标准</h5><p>web标准不是某一个标准，而是由W3C组织和其他标准化组织制定的一系列标准的合集。</p>
+<p>W3C万维网联盟是国际最著名的标准化组织。1994年成立之后，至今已发布近百项相关万维网标准，对万维网发展做出了重要贡献。</p>
+<p>W3C就类似于现实世界中的联合国。</p>
+<p>++经典面试题：说出网页中web标准三层组成。++</p>
+<p><strong>构成：</strong> 主要包括结构（Structure）、表现（Presentation）和行为（Behavior）三个方面。</p>
+<table>
+<thead>
+<tr>
+<th>标准</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>结构</td>
+<td>结构用于对网页元素进行整理和分类，主要是HTML</td>
+</tr>
+<tr>
+<td>表现</td>
+<td>表现用于设置网页元素的版式、颜色、大小等外观样式，主要使用CSS</td>
+</tr>
+<tr>
+<td>行为</td>
+<td>行为是指网页模型的定义及交互的编写，主要使用Javascript</td>
+</tr>
+</tbody></table>
+<h5 id="web标准的好处"><a href="#web标准的好处" class="headerlink" title="web标准的好处"></a>web标准的好处</h5><p>遵循web标准可以让不同我们写的页面更标准更统一外，还有许多优点</p>
+<ol>
+<li>让web的发展前景更广阔。</li>
+<li>内容能被更广泛的设备访问。</li>
+<li>更容易被搜索引擎搜索。</li>
+<li>降低网站流量费用。</li>
+<li>是网站更易于维护</li>
+<li>提高页面浏览速度。</li>
+</ol>
+<h5 id="web标准小结"><a href="#web标准小结" class="headerlink" title="web标准小结"></a>web标准小结</h5><ul>
+<li>web标准有三层结构，分别是结构（html）、表现（CSS）、行为（javascript）</li>
+<li>结构类似人类的身体，表现类似人的着装，行为类似人的行为动作</li>
+<li>理想状态下，他们是三层独立的，放到不同的文件里面。</li>
+</ul>
+<h5 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h5><p>浏览器内核包括两部分，渲染引擎和JS引擎。渲染引擎负责读取网页内容，整理讯息，计算网页的显示方式并显示页面，JS引擎是解析执行JS获取网页的动态效果。后来js引擎越来越独立，内核就倾向于只指渲染引擎。</p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>浏览器内核</tag>
+        <tag>web标准</tag>
+        <tag>web标准三层组成</tag>
+      </tags>
+  </entry>
 </search>
