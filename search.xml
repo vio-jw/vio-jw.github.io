@@ -3,7 +3,7 @@
   <entry>
     <title>内置对象</title>
     <url>/2020/04/18/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script><hr>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><hr>
 <p>title: 内置函数<br>date: 2019-1-1 13:12:57<br>categories:</p>
 <ul>
 <li>web前端<br>tags:</li>
@@ -16,9 +16,36 @@
 <h4 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h4>]]></content>
   </entry>
   <entry>
+    <title>new关键字</title>
+    <url>/2019/12/30/new%E5%85%B3%E9%94%AE%E5%AD%97/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h4 id="new关键字"><a href="#new关键字" class="headerlink" title="new关键字"></a>new关键字</h4><p>1.new构造函数可以在内存中创建一个空的对象</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function Star(uname,age,sex)&#123;</span><br><span class="line">    this.name &#x3D; unmae;</span><br><span class="line">    this.age &#x3D; age;</span><br><span class="line">    this.sex &#x3D; sex;</span><br><span class="line">&#125;</span><br><span class="line">var ldh &#x3D; new Star(&#39;刘&#39;,18,&#39;男&#39;);</span><br></pre></td></tr></table></figure>
+<p>2.this就会指向刚刚创建的空对象。</p>
+<p>3.执行构造函数里面的代码，给这个空对象添加属性和方法.</p>
+<p>4.返回这个对象（new的作用），所以构造函数里面不需要return.</p>
+<h5 id="遍历对象"><a href="#遍历对象" class="headerlink" title="遍历对象"></a>遍历对象</h5><p>因为属性是无序的，所以无法使用for循环</p>
+<blockquote>
+<p>for …in语句用于对数组或者对象（最合适的）的属性进行循环操作.</p>
+</blockquote>
+<p>使用方法</p>
+<blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for(变量 in 对象)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">例子：</span><br><span class="line">var obj &#x3D; &#123;</span><br><span class="line">    name : &#39;ldh&#39;;</span><br><span class="line">    gae : 18;</span><br><span class="line">    sex : &#39;男&#39;</span><br><span class="line">&#125;</span><br><span class="line">for(var K in obj)&#123;</span><br><span class="line">    consloe.log(obj[K]); &#x2F;&#x2F;对象名[变量],obj[K]得到是属性值</span><br><span class="line">    &#x2F;&#x2F;我们使用for...in 里面的变量我们喜欢写K或者Key</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>web前端</tag>
+        <tag>new关键字</tag>
+        <tag>遍历对象</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>对象</title>
     <url>/2019/12/30/%E5%AF%B9%E8%B1%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script><h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>对象是一个具体的事物，是由属性和方法组成的。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>对象是一个具体的事物，是由属性和方法组成的。</p>
 <p><strong>属性</strong></p>
 <blockquote>
 <p>事物的特征，在对象中用属性来表示（常用名词）</p>
@@ -75,36 +102,9 @@
       </tags>
   </entry>
   <entry>
-    <title>new关键字</title>
-    <url>/2019/12/30/new%E5%85%B3%E9%94%AE%E5%AD%97/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script><h4 id="new关键字"><a href="#new关键字" class="headerlink" title="new关键字"></a>new关键字</h4><p>1.new构造函数可以在内存中创建一个空的对象</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function Star(uname,age,sex)&#123;</span><br><span class="line">    this.name &#x3D; unmae;</span><br><span class="line">    this.age &#x3D; age;</span><br><span class="line">    this.sex &#x3D; sex;</span><br><span class="line">&#125;</span><br><span class="line">var ldh &#x3D; new Star(&#39;刘&#39;,18,&#39;男&#39;);</span><br></pre></td></tr></table></figure>
-<p>2.this就会指向刚刚创建的空对象。</p>
-<p>3.执行构造函数里面的代码，给这个空对象添加属性和方法.</p>
-<p>4.返回这个对象（new的作用），所以构造函数里面不需要return.</p>
-<h5 id="遍历对象"><a href="#遍历对象" class="headerlink" title="遍历对象"></a>遍历对象</h5><p>因为属性是无序的，所以无法使用for循环</p>
-<blockquote>
-<p>for …in语句用于对数组或者对象（最合适的）的属性进行循环操作.</p>
-</blockquote>
-<p>使用方法</p>
-<blockquote>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for(变量 in 对象)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">例子：</span><br><span class="line">var obj &#x3D; &#123;</span><br><span class="line">    name : &#39;ldh&#39;;</span><br><span class="line">    gae : 18;</span><br><span class="line">    sex : &#39;男&#39;</span><br><span class="line">&#125;</span><br><span class="line">for(var K in obj)&#123;</span><br><span class="line">    consloe.log(obj[K]); &#x2F;&#x2F;对象名[变量],obj[K]得到是属性值</span><br><span class="line">    &#x2F;&#x2F;我们使用for...in 里面的变量我们喜欢写K或者Key</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-      <tags>
-        <tag>web前端</tag>
-        <tag>new关键字</tag>
-        <tag>遍历对象</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>变量作用域</title>
     <url>/2019/12/29/%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script><ol>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ol>
 <li>全局变量在代码的任何位置都可以使用</li>
 <li>特殊情况下，在函数内不使用var声明的变量也是全局变量（不建议使用）.</li>
 </ol>
@@ -139,7 +139,7 @@
   <entry>
     <title>短路运算</title>
     <url>/2019/12/28/%E9%80%BB%E8%BE%91%E4%B8%AD%E6%96%AD%EF%BC%8C%E5%BE%AA%E7%8E%AF/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script><h4 id="短路运算（逻辑判断）"><a href="#短路运算（逻辑判断）" class="headerlink" title="短路运算（逻辑判断）"></a>短路运算（逻辑判断）</h4><p>短路运算的原理：当有多个表达式（值）时，左边的表达式值可以确定结果时，就不再继续运算右边的表达式的值：</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h4 id="短路运算（逻辑判断）"><a href="#短路运算（逻辑判断）" class="headerlink" title="短路运算（逻辑判断）"></a>短路运算（逻辑判断）</h4><p>短路运算的原理：当有多个表达式（值）时，左边的表达式值可以确定结果时，就不再继续运算右边的表达式的值：</p>
 <html>
 <!--在这里插入内容-->
 <ol>
@@ -199,7 +199,7 @@
   <entry>
     <title>变量命名规范</title>
     <url>/2019/12/27/js%E5%8F%98%E9%87%8F%E3%80%81js%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script><h3 id="变量命名规范"><a href="#变量命名规范" class="headerlink" title="变量命名规范"></a>变量命名规范</h3><ul>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="变量命名规范"><a href="#变量命名规范" class="headerlink" title="变量命名规范"></a>变量命名规范</h3><ul>
 <li><h6 id="由字母、数字、下划线、美元符号组成"><a href="#由字母、数字、下划线、美元符号组成" class="headerlink" title="由字母、数字、下划线、美元符号组成"></a>由字母、数字、下划线、美元符号组成</h6></li>
 <li><h6 id="严格区分大小写"><a href="#严格区分大小写" class="headerlink" title="严格区分大小写"></a>严格区分大小写</h6></li>
 <li><h6 id="不能以数字开头"><a href="#不能以数字开头" class="headerlink" title="不能以数字开头"></a>不能以数字开头</h6></li>
