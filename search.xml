@@ -32,6 +32,12 @@
 <p>Error() String</p>
 <p>}</p>
 ]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>golang</tag>
+      </tags>
   </entry>
   <entry>
     <title>内置对象</title>
