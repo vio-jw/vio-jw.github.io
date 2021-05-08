@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Init函数和main函数</title>
+    <url>/2021/01/08/Init%E5%87%BD%E6%95%B0%E5%92%8Cmain%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>#</p>
+<h1 id="Init"><a href="#Init" class="headerlink" title="Init"></a>Init</h1><h1 id="函数和"><a href="#函数和" class="headerlink" title="函数和"></a>函数和</h1><h1 id="main"><a href="#main" class="headerlink" title="main"></a>main</h1><h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="init-函数"><a href="#init-函数" class="headerlink" title="init** 函数**"></a><strong>init**</strong> 函数**</h2><p>go语言中init函数用于包(package)的初始化，该函数是go语言的一个重要特性。</p>
+<p>有下面的特征：</p>
+<p>1 init函数是用于程序执行前做包的初始化的函数，比如初始化包里的变量等</p>
+<p>2 每个包可以拥有多个init函数</p>
+<p>3 包的每个源文件也可以拥有多个init函数</p>
+<p>4 同一个包中多个init函数的执行顺序go语言没有明确的定义(说明)</p>
+<p>5 不同包的init函数按照包导入的依赖关系决定该初始化函数的执行顺序</p>
+<p>6 init函数不能被其他函数调用，而是在main函数执行之前，自动被调用</p>
+<h2 id="main-函数"><a href="#main-函数" class="headerlink" title="main** 函数**"></a><strong>main**</strong> 函数**</h2><p>Go语言程序的默认入口函数(主函数)：func <strong>main</strong> ()</p>
+<p>函数体用｛｝一对括号包裹。</p>
+<p>func <strong>main</strong> (){</p>
+<p><em>//__函数体</em></p>
+<p>}</p>
+<h2 id="init-函数和-main-函数的异同"><a href="#init-函数和-main-函数的异同" class="headerlink" title="init** 函数和 main 函数的异同**"></a><strong>init**</strong> 函数和 <strong><strong>main</strong></strong> 函数的异同**</h2><p>相同点：</p>
+<p>两个函数在定义时不能有任何的参数和返回值，且Go程序自动调用。</p>
+<p>不同点：</p>
+<p>init可以应用于任意包中，且可以重复定义多个。</p>
+<p>main函数只能用于main包中，且只能定义一个。</p>
+<p>两个函数的执行顺序：</p>
+<p>对同一个go文件的init()调用顺序是从上到下的。</p>
+<p>对同一个package中不同文件是按文件名字符串比较&quot;从小到大&quot;顺序调用各文件中的init()函数。</p>
+<p>对于不同的package，如果不相互依赖的话，按照main包中&quot;先import的后调用&quot;的顺序调用其包中的init()，如果package存在依赖，则先调用最早被依赖的package中的init()，最后调用main函数。</p>
+<p>如果init函数中使用了println()或者print()你会发现在执行过程中这两个不会按照你想象中的顺序执行。这两个函数官方只推荐在测试环境中使用，对于正式环境不要使用。</p>
+]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>golang</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>golang内置类型和函数</title>
     <url>/2021/01/07/golang%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>#</p>
