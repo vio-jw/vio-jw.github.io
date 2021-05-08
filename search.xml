@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>命令</title>
+    <url>/2021/01/08/%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>#</p>
+<h1 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h1><p>假如你已安装了golang环境，你可以在命令行执行go命令查看相关的Go语言命令：</p>
+<p>$ go</p>
+<p>Go is a tool for managing Go source code.</p>
+<p>Usage:</p>
+<p>go command [arguments]</p>
+<p>The commands are:</p>
+<p>build compile packages and dependencies</p>
+<p>clean remove object files</p>
+<p>doc <strong>show</strong> documentation <strong>for**</strong> package <strong>**or</strong> symbol</p>
+<p>env print <strong>Go</strong> environment information</p>
+<p>bug <strong>start</strong> a bug report</p>
+<p>fix run <strong>go</strong> tool fix <strong>on</strong> packages</p>
+<p>fmt run gofmt <strong>on**</strong> package** sources</p>
+<p>generate generate <strong>Go</strong> files <strong>by</strong> processing <strong>source</strong></p>
+<p><strong>get</strong> download <strong>and**</strong> install <strong>packages</strong> and** dependencies</p>
+<p><strong>install</strong> compile <strong>and**</strong> install <strong>packages</strong> and** dependencies</p>
+<p><strong>list**</strong> list** packages</p>
+<p>run compile <strong>and</strong> run <strong>Go</strong> program</p>
+<p><strong>test**</strong> test** packages</p>
+<p>tool run specified <strong>go</strong> tool</p>
+<p><strong>version</strong> print <strong>Go**</strong> version**</p>
+<p>vet run <strong>go</strong> tool vet <strong>on</strong> packages</p>
+<p><strong>Use</strong>&quot;go help [command]&quot; <strong>for</strong> more information about a command.</p>
+<p>Additional <strong>help</strong> topics:</p>
+<p>c <strong>calling**</strong> between <strong><strong>Go</strong></strong> and** C</p>
+<p>buildmode description <strong>of**</strong> build** modes</p>
+<p>filetype <strong>file</strong> types</p>
+<p>gopath GOPATH environment <strong>variable</strong></p>
+<p>environment environment <strong>variables</strong></p>
+<p>importpath <strong>import**</strong> path** syntax</p>
+<p>packages description <strong>of**</strong> package** lists</p>
+<p>testflag description <strong>of</strong> testing flags</p>
+<p>testfunc description <strong>of</strong> testing functions</p>
+<p><strong>Use</strong>&quot;go help [topic]&quot; <strong>for</strong> more information about that topic.</p>
+<p>go env用于打印Go语言的环境信息。</p>
+<p>go run命令可以编译并运行命令源码文件。</p>
+<p>go get可以根据要求和实际情况从互联网上下载或更新指定的代码包及其依赖包，并对它们进行编译和安装。</p>
+<p>go build命令用于编译我们指定的源码文件或代码包以及它们的依赖包。</p>
+<p>go install用于编译并安装指定的代码包及它们的依赖包。</p>
+<p>go clean命令会删除掉执行其它命令时产生的一些文件和目录。</p>
+<p>go doc命令可以打印附于Go语言程序实体上的文档。我们可以通过把程序实体的标识符作为该命令的参数来达到查看其文档的目的。</p>
+<p>go test命令用于对Go语言编写的程序进行测试。</p>
+<p>go list命令的作用是列出指定的代码包的信息。</p>
+<p>go fix会把指定代码包的所有Go语言源码文件中的旧版本代码修正为新版本的代码。</p>
+<p>go vet是一个用于检查Go语言源码中静态错误的简单工具。</p>
+<p>go tool pprof命令来交互式的访问概要文件的内容。</p>
+]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>golang</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Init函数和main函数</title>
     <url>/2021/01/08/Init%E5%87%BD%E6%95%B0%E5%92%8Cmain%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>#</p>
