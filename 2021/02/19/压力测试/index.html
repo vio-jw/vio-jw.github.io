@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>压力测试 | Jw's Blog</title><meta name="description" content="压力测试"><meta name="keywords" content="golang"><meta name="author" content="vio-jw,yjw-1017@outlook.com"><meta name="copyright" content="vio-jw"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/u=1081158815,3939059762&fm=26&gp=0.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="压力测试"><meta name="twitter:description" content="压力测试"><meta name="twitter:image" content="https://wallroom.io/img/1920x1080/bg-0cf6fd0.jpg"><meta property="og:type" content="article"><meta property="og:title" content="压力测试"><meta property="og:url" content="http://1py1vm.coding-pages.com/2021/02/19/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/"><meta property="og:site_name" content="Jw's Blog"><meta property="og:description" content="压力测试"><meta property="og:image" content="https://wallroom.io/img/1920x1080/bg-0cf6fd0.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://1py1vm.coding-pages.com/2021/02/19/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/"><link rel="prev" title="循环控制Goto、Break、Continue" href="http://1py1vm.coding-pages.com/2021/02/19/%E5%BE%AA%E7%8E%AF%E6%8E%A7%E5%88%B6Goto%E3%80%81Break%E3%80%81Continue/"><link rel="next" title="异常处理" href="http://1py1vm.coding-pages.com/2021/02/19/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/"><link rel="stylesheet" href="https://fonts.geekzu.org/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: {"text":"正心,取势,明道,优术,修身,齐家,治国,平天下,践行,合众","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/20170917230838_HPMLr.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">49</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">32</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 爱好</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#压力测试"><span class="toc-number">1.</span> <span class="toc-text">压力测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Go-怎么写测试用例"><span class="toc-number">1.0.1.</span> <span class="toc-text">Go** 怎么写测试用例**</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何编写测试用例"><span class="toc-number">1.0.2.</span> <span class="toc-text">如何编写测试用例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何编写压力测试"><span class="toc-number">1.0.3.</span> <span class="toc-text">如何编写压力测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">1.0.4.</span> <span class="toc-text">小结</span></a></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://wallroom.io/img/1920x1080/bg-0cf6fd0.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Jw's Blog</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 爱好</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">压力测试</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2021-02-19 22:39:19"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2021-02-19</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2021-05-09 22:52:00"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2021-05-09</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/golang/">golang</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2021/02/19/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2021/02/19/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><p>#</p>
+<h1 id="压力测试"><a href="#压力测试" class="headerlink" title="压力测试"></a>压力测试</h1><h3 id="Go-怎么写测试用例"><a href="#Go-怎么写测试用例" class="headerlink" title="Go** 怎么写测试用例**"></a><strong>Go**</strong> 怎么写测试用例**</h3><p>开发程序其中很重要的一点是测试，我们如何保证代码的质量，如何保证每个函数是可运行，运行结果是正确的，又如何保证写出来的代码性能是好的，我们知道单元测试的重点在于发现程序设计或实现的逻辑错误，使问题及早暴露，便于问题的定位解决，而性能测试的重点在于发现程序设计上的一些问题，让线上的程序能够在高并发的情况下还能保持稳定。本小节将带着这一连串的问题来讲解Go语言中如何来实现单元测试和性能测试。</p>
+<p>Go语言中自带有一个轻量级的测试框架testing和自带的go test命令来实现单元测试和性能测试，testing框架和其他语言中的测试框架类似，你可以基于这个框架写针对相应函数的测试用例，也可以基于该框架写相应的压力测试用例，那么接下来让我们一一来看一下怎么写。</p>
+<p>另外建议安装gotests插件自动生成测试代码:</p>
+<p>go get -u -v github.com/cweill/gotests/…</p>
+<h3 id="如何编写测试用例"><a href="#如何编写测试用例" class="headerlink" title="如何编写测试用例"></a><strong>如何编写测试用例</strong></h3><p>由于go test命令只能在一个相应的目录下执行所有文件，所以我们接下来新建一个项目目录gotest,这样我们所有的代码和测试代码都在这个目录下。</p>
+<p>接下来我们在该目录下面创建两个文件：gotest.go和gotest_test.go</p>
+<p>gotest.go:这个文件里面我们是创建了一个包，里面有一个函数实现了除法运算:</p>
+<p>package gotest</p>
+<p>import (</p>
+<p>&quot;errors&quot;</p>
+<p>)</p>
+<p>func Division(a, b float64) (float64, error) {</p>
+<p><strong>if</strong> b == 0 {</p>
+<p>return 0, errors.New(&quot;除数不能为0&quot;)</p>
+<p>}</p>
+<p>return a / b, nil</p>
+<p>}</p>
+<p>gotest_test.go:这是我们的单元测试文件，但是记住下面的这些原则：</p>
+<p>文件名必须是_test.go结尾的，这样在执行go test的时候才会执行到相应的代码</p>
+<p>你必须import testing这个包</p>
+<p>所有的测试用例函数必须是Test开头</p>
+<p>测试用例会按照源代码中写的顺序依次执行</p>
+<p>测试函数TestXxx()的参数是testing.T，我们可以使用该类型来记录错误或者是测试状态</p>
+<p>测试格式：func TestXxx (t *testing.T),Xxx部分可以为任意的字母数字的组合，但是首字母不能是小写字母[a-z]，例如Testintdiv是错误的函数名。</p>
+<p>函数中通过调用testing.T的Error, Errorf, FailNow, Fatal, FatalIf方法，说明测试不通过，调用Log方法用来记录测试的信息。</p>
+<p>下面是我们的测试用例的代码：</p>
+<p><strong>package</strong> gotest</p>
+<p><strong>import</strong> (</p>
+<p>&quot;testing&quot;</p>
+<p>)</p>
+<p>func <strong>Test_Division_1</strong> (t *testing.T) {</p>
+<p><strong>if</strong> i, e := Division(6, 2); i != 3 || e != nil { <em>//try a unit test on function</em></p>
+<p>t.Error(&quot;除法函数测试没通过&quot;) <em>//</em> <em>如果不是如预期的那么就报错</em></p>
+<p>} <strong>else</strong> {</p>
+<p>t.Log(&quot;第一个测试通过了&quot;) <em>//__记录一些你期望记录的信息</em></p>
+<p>}</p>
+<p>}</p>
+<p>func <strong>Test_Division_2</strong> (t *testing.T) {</p>
+<p>t.Error(&quot;就是不通过&quot;)</p>
+<p>}</p>
+<p>我们在项目目录下面执行go test,就会显示如下信息：</p>
+<p><strong>—**</strong> FAIL <strong>:</strong> Test_Division_2<strong>(0.00</strong>seconds**)</p>
+<p><strong>gotest_test</strong>.go:16: 就是不通过</p>
+<p><strong>FAIL</strong></p>
+<p><strong>exit**</strong> status** 1</p>
+<p><strong>FAIL**</strong> gotest** 0.013s</p>
+<p>从这个结果显示测试没有通过，因为在第二个测试函数中我们写死了测试不通过的代码t.Error，那么我们的第一个函数执行的情况怎么样呢？默认情况下执行go test是不会显示测试通过的信息的，我们需要带上参数go test -v，这样就会显示如下信息：</p>
+<p><em>=== RUN Test_Division_1</em></p>
+<p>— PASS: Test_Division_1 (0.00 seconds)</p>
+<p>gotest_test.go:11: 第一个测试通过了</p>
+<p><em>=== RUN Test_Division_2</em></p>
+<p>— FAIL: Test_Division_2 (0.00 seconds)</p>
+<p>gotest_test.go:16: 就是不通过</p>
+<p>FAIL</p>
+<p>exit status 1</p>
+<p>FAIL gotest 0.012s</p>
+<p>上面的输出详细的展示了这个测试的过程，我们看到测试函数1Test_Division_1测试通过，而测试函数2Test_Division_2测试失败了，最后得出结论测试不通过。接下来我们把测试函数2修改成如下代码：</p>
+<p>func <strong>Test_Division_2</strong> (t *testing.T) {</p>
+<p><strong>if</strong> _, e := Division(6, 0); e == nil { <em>//try a unit test on function</em></p>
+<p>t.Error(&quot;Division did not work as expected.&quot;) <em>//</em> <em>如果不是如预期的那么就报错</em></p>
+<p>} <strong>else</strong> {</p>
+<p>t.Log(&quot;one test passed.&quot;, e) <em>//__记录一些你期望记录的信息</em></p>
+<p>}</p>
+<p>}</p>
+<p>然后我们执行go test -v，就显示如下信息，测试通过了：</p>
+<p><em>=== RUN Test_Division_1</em></p>
+<p>— PASS: Test_Division_1 (0.00 seconds)</p>
+<p>gotest_test.go:11: 第一个测试通过了</p>
+<p><em>=== RUN Test_Division_2</em></p>
+<p>— PASS: Test_Division_2 (0.00 seconds)</p>
+<p>gotest_test.go:20: one test passed. 除数不能为0</p>
+<p>PASS</p>
+<p>ok gotest 0.013s</p>
+<h3 id="如何编写压力测试"><a href="#如何编写压力测试" class="headerlink" title="如何编写压力测试"></a><strong>如何编写压力测试</strong></h3><p>压力测试用来检测函数(方法）的性能，和编写单元功能测试的方法类似,此处不再赘述，但需要注意以下几点：</p>
+<p>压力测试用例必须遵循如下格式，其中XXX可以是任意字母数字的组合，但是首字母不能是小写字母</p>
+<p>func <strong>BenchmarkXXX</strong> (b *testing.B) { … }</p>
+<p>go test不会默认执行压力测试的函数，如果要执行压力测试需要带上参数-test.bench，语法:-test.bench=&quot;test_name_regex&quot;,例如go test -test.bench=&quot;.*&quot;表示测试全部的压力测试函数</p>
+<p>在压力测试用例中,请记得在循环体内使用testing.B.N,以使测试可以正常的运行<br>文件名也必须以_test.go结尾</p>
+<p>下面我们新建一个压力测试文件webbench_test.go，代码如下所示：</p>
+<p><strong>package</strong> gotest</p>
+<p><strong>import</strong> (</p>
+<p>&quot;testing&quot;</p>
+<p>)</p>
+<p>func <strong>Benchmark_Division</strong> (b *testing.B) {</p>
+<p><strong>for</strong> i := 0; i &amp;lt; b.N; i++ { <em>//use b.N for looping</em></p>
+<p>Division(4, 5)</p>
+<p>}</p>
+<p>}</p>
+<p>func <strong>Benchmark_TimeConsumingFunction</strong> (b *testing.B) {</p>
+<p>b.StopTimer() <em>//__调用该函数停止压力测试的时间计数</em></p>
+<p><em>// <strong>做一些初始化的工作</strong> , <strong>例如读取文件数据</strong> , <strong>数据库连接之类的</strong> ,</em></p>
+<p><em>//__这样这些时间不影响我们测试函数本身的性能</em></p>
+<p>b.StartTimer() <em>//__重新开始时间</em></p>
+<p><strong>for</strong> i := 0; i &amp;lt; b.N; i++ {</p>
+<p>Division(4, 5)</p>
+<p>}</p>
+<p>}</p>
+<p>我们执行命令go test webbench_test.go -test.bench=&quot;.*&quot;，可以看到如下结果：</p>
+<p>Benchmark_Division-4 500000000 7.76 ns/op 456 B/op 14 allocs/op</p>
+<p>Benchmark_TimeConsumingFunction-4 500000000 7.80 ns/op 224 B/op 4 allocs/op</p>
+<p>PASS</p>
+<p>ok gotest 9.364s</p>
+<p>上面的结果显示我们没有执行任何TestXXX的单元测试函数，显示的结果只执行了压力测试函数，第一条显示了Benchmark_Division执行了500000000次，每次的执行平均时间是7.76纳秒，第二条显示了Benchmark_TimeConsumingFunction执行了500000000，每次的平均执行时间是7.80纳秒。最后一条显示总共的执行时间。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h3><p>通过上面对单元测试和压力测试的学习，我们可以看到testing包很轻量，编写单元测试和压力测试用例非常简单，配合内置的go test命令就可以非常方便的进行测试，这样在我们每次修改完代码,执行一下go test就可以简单的完成回归测试了。</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:yjw-1017@outlook.com">vio-jw</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://1py1vm.coding-pages.com/2021/02/19/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">http://1py1vm.coding-pages.com/2021/02/19/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://1py1vm.coding-pages.com" target="_blank">Jw's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/golang/">golang</a></div><div class="post_share"><div class="social-share" data-image="https://wallroom.io/img/1920x1080/bg-12d9d47.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2021/02/19/%E5%BE%AA%E7%8E%AF%E6%8E%A7%E5%88%B6Goto%E3%80%81Break%E3%80%81Continue/"><img class="prev_cover lazyload" data-src="https://wallroom.io/img/1920x1080/bg-14286ab.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">循环控制Goto、Break、Continue</div></div></a></div><div class="next-post pull_right"><a href="/2021/02/19/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/"><img class="next_cover lazyload" data-src="https://wallroom.io/img/1920x1080/bg-2b801d4.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">异常处理</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2021/01/07/golang内置类型和函数/" title="golang内置类型和函数"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-119e935.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-07</div><div class="relatedPosts_title">golang内置类型和函数</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/08/Init函数和main函数/" title="Init函数和main函数"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-0d4abee.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-08</div><div class="relatedPosts_title">Init函数和main函数</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/08/命令/" title="命令"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-0cf6fd0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-08</div><div class="relatedPosts_title">命令</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/09/”基本类型“/" title="基本类型"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-0ecf3b1.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-09</div><div class="relatedPosts_title">基本类型</div></div></a></div><div class="relatedPosts_item"><a href="/2021/02/19/GMP原理和调度/" title="GMP原理和调度"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-12d9d47.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-02-19</div><div class="relatedPosts_title">GMP原理和调度</div></div></a></div><div class="relatedPosts_item"><a href="/2021/02/19/Channel/" title="Channel"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-05e3c1f.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-02-19</div><div class="relatedPosts_title">Channel</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: 'iEgNuNBCTaihslibuDwal7C5-gzGzoHsz',
+  appKey: 'm6S8TQcmY7gNtxgbvUV8dBhp',
+  placeholder: '分享你的想法吧~',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" style="background-image: url(https://wallroom.io/img/1920x1080/bg-0cf6fd0.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By vio-jw</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="icp"><a><img class="icp-icon" src="/img/icp.png"/><span>闽ICP备20007536</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="ribbon_piao" mobile="true" src="/js/third-party/piao.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/click_heart.js"></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script></body></html>

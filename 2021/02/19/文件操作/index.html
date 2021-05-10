@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>文件操作 | Jw's Blog</title><meta name="description" content="文件操作"><meta name="keywords" content="golang"><meta name="author" content="vio-jw,yjw-1017@outlook.com"><meta name="copyright" content="vio-jw"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/u=1081158815,3939059762&fm=26&gp=0.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="文件操作"><meta name="twitter:description" content="文件操作"><meta name="twitter:image" content="https://wallroom.io/img/1920x1080/bg-00082f7.jpg"><meta property="og:type" content="article"><meta property="og:title" content="文件操作"><meta property="og:url" content="http://1py1vm.coding-pages.com/2021/02/19/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"><meta property="og:site_name" content="Jw's Blog"><meta property="og:description" content="文件操作"><meta property="og:image" content="https://wallroom.io/img/1920x1080/bg-00082f7.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://1py1vm.coding-pages.com/2021/02/19/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"><link rel="prev" title="循环语句for" href="http://1py1vm.coding-pages.com/2021/02/19/%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5for/"><link rel="next" title="循环控制Goto、Break、Continue" href="http://1py1vm.coding-pages.com/2021/02/19/%E5%BE%AA%E7%8E%AF%E6%8E%A7%E5%88%B6Goto%E3%80%81Break%E3%80%81Continue/"><link rel="stylesheet" href="https://fonts.geekzu.org/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: {"text":"正心,取势,明道,优术,修身,齐家,治国,平天下,践行,合众","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/20170917230838_HPMLr.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">49</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">32</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 爱好</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#文件操作"><span class="toc-number">1.</span> <span class="toc-text">文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#打开和关闭文件"><span class="toc-number">1.0.1.</span> <span class="toc-text">打开和关闭文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读取文件"><span class="toc-number">1.1.</span> <span class="toc-text">读取文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#file-Read"><span class="toc-number">1.1.1.</span> <span class="toc-text">file.Read()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本使用"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">基本使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#循环读取"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">循环读取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bufio-读取文件"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">bufio** 读取文件**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ioutil-读取整个文件"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">ioutil** 读取整个文件**</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件写入操作"><span class="toc-number">1.2.</span> <span class="toc-text">文件写入操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-和-WriteString"><span class="toc-number">1.2.1.</span> <span class="toc-text">Write** 和 **WriteString</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bufio-NewWriter"><span class="toc-number">1.2.2.</span> <span class="toc-text">bufio.NewWriter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ioutil-WriteFile"><span class="toc-number">1.2.3.</span> <span class="toc-text">ioutil.WriteFile</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例子"><span class="toc-number">1.3.</span> <span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#copyFile"><span class="toc-number">1.3.1.</span> <span class="toc-text">copyFile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现一个-cat-命令"><span class="toc-number">1.3.2.</span> <span class="toc-text">实现一个** cat **命令</span></a></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://wallroom.io/img/1920x1080/bg-00082f7.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Jw's Blog</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 爱好</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">文件操作</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2021-02-19 22:39:19"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2021-02-19</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2021-05-09 23:10:18"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2021-05-09</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/golang/">golang</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2021/02/19/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2021/02/19/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><p>#</p>
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><h3 id="打开和关闭文件"><a href="#打开和关闭文件" class="headerlink" title="打开和关闭文件"></a><strong>打开和关闭文件</strong></h3><p>os.Open()函数能够打开一个文件，返回一个*File和一个err。对得到的文件实例调用close()方法能够关闭文件。</p>
+<p><strong>package</strong> main</p>
+<p><strong>import</strong> (</p>
+<p>&quot;fmt&quot;</p>
+<p>&quot;os&quot;</p>
+<p>)</p>
+<p>func <strong>main</strong> () {</p>
+<p><em>//</em> <em>只读方式打开当前目录下的 <strong>main.go</strong> 文件</em></p>
+<p>file, err := os.Open(&quot;./main.go&quot;)</p>
+<p><strong>if</strong> err != nil {</p>
+<p>fmt.Println(&quot;open file failed!, err:&quot;, err)</p>
+<p><strong>return</strong></p>
+<p>}</p>
+<p><em>//</em> <em>关闭文件</em></p>
+<p>file.Close()</p>
+<p>}</p>
+<p>为了防止文件忘记关闭，我们通常使用defer注册文件关闭语句。</p>
+<h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a><strong>读取文件</strong></h2><h3 id="file-Read"><a href="#file-Read" class="headerlink" title="file.Read()"></a><strong>file.Read()</strong></h3><h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a><strong>基本使用</strong></h4><p>Read方法定义如下：</p>
+<p>func (f *File) Read(b [] <strong>byte</strong> ) (n <strong>int</strong> , err error)</p>
+<p>它接收一个字节切片，返回读取的字节数和可能的具体错误，读到文件末尾时会返回0和io.EOF。 举个例子：</p>
+<p>func <strong>main</strong> () {</p>
+<p><em>//</em> <em>只读方式打开当前目录下的 <strong>main.go</strong> 文件</em></p>
+<p>file, err := os.Open(&quot;./main.go&quot;)</p>
+<p><strong>if</strong> err != nil {</p>
+<p>fmt.Println(&quot;open file failed!, err:&quot;, err)</p>
+<p><strong>return</strong></p>
+<p>}</p>
+<p>defer file.Close()</p>
+<p><em>//</em> <em>使用 <strong>Read</strong> 方法读取数据</em></p>
+<p><strong>var</strong> tmp = make([] <strong>byte</strong> , 128)</p>
+<p>n, err := file.Read(tmp)</p>
+<p><strong>if</strong> err == io.EOF {</p>
+<p>fmt.Println(&quot;文件读完了&quot;)</p>
+<p><strong>return</strong></p>
+<p>}</p>
+<p><strong>if</strong> err != nil {</p>
+<p>fmt.Println(&quot;read file failed, err:&quot;, err)</p>
+<p><strong>return</strong></p>
+<p>}</p>
+<p>fmt.Printf(&quot;读取了%d字节数据\n&quot;, n)</p>
+<p>fmt.Println( <strong>string</strong> (tmp[:n]))</p>
+<p>}</p>
+<h4 id="循环读取"><a href="#循环读取" class="headerlink" title="循环读取"></a><strong>循环读取</strong></h4><p>使用for循环读取文件中的所有数据。</p>
+<p>func <strong>main</strong> () {</p>
+<p><em>//</em> <em>只读方式打开当前目录下的 <strong>main.go</strong> 文件</em></p>
+<p>file, err := os.Open(&quot;./main.go&quot;)</p>
+<p><strong>if</strong> err != nil {</p>
+<p>fmt.Println(&quot;open file failed!, err:&quot;, err)</p>
+<p><strong>return</strong></p>
+<p>}</p>
+<p>defer file.Close()</p>
+<p><em>//</em> <em>循环读取文件</em></p>
+<p><strong>var</strong> content [] <strong>byte</strong></p>
+<p><strong>var</strong> tmp = make([] <strong>byte</strong> , 128)</p>
+<p><strong>for</strong> {</p>
+<p>n, err := file.Read(tmp)</p>
+<p><strong>if</strong> err == io.EOF {</p>
+<p>fmt.Println(&quot;文件读完了&quot;)</p>
+<p><strong>break</strong></p>
+<p>}</p>
+<p><strong>if</strong> err != nil {</p>
+<p>fmt.Println(&quot;read file failed, err:&quot;, err)</p>
+<p><strong>return</strong></p>
+<p>}</p>
+<p>content = append(content, tmp[:n]…)</p>
+<p>}</p>
+<p>fmt.Println( <strong>string</strong> (content))</p>
+<p>}</p>
+<h4 id="bufio-读取文件"><a href="#bufio-读取文件" class="headerlink" title="bufio** 读取文件**"></a><strong>bufio**</strong> 读取文件**</h4><p>bufio是在file的基础上封装了一层API，支持更多的功能。</p>
+<p><strong>package</strong> main</p>
+<p><strong>import</strong> (</p>
+<p>&quot;bufio&quot;</p>
+<p>&quot;fmt&quot;</p>
+<p>&quot;io&quot;</p>
+<p>&quot;os&quot;</p>
+<p>)</p>
+<p><em>// bufio__按行读取示例</em></p>
+<p>func <strong>main</strong> () {</p>
+<p>file, err := os.Open(&quot;./main.go&quot;)</p>
+<p><strong>if</strong> err != nil {</p>
+<p>fmt.Println(&quot;open file failed, err:&quot;, err)</p>
+<p><strong>return</strong></p>
+<p>}</p>
+<p>defer file.Close()</p>
+<p>reader := bufio.NewReader(file)</p>
+<p><strong>for</strong> {</p>
+<p>line, err := reader.ReadString(&#39;\n&#39;) <em>//__注意是字符</em></p>
+<p><strong>if</strong> err == io.EOF {</p>
+<p>fmt.Println(&quot;文件读完了&quot;)</p>
+<p><strong>break</strong></p>
+<p>}</p>
+<p><strong>if</strong> err != nil {</p>
+<p>fmt.Println(&quot;read file failed, err:&quot;, err)</p>
+<p><strong>return</strong></p>
+<p>}</p>
+<p>fmt.Print(line)</p>
+<p>}</p>
+<p>}</p>
+<h4 id="ioutil-读取整个文件"><a href="#ioutil-读取整个文件" class="headerlink" title="ioutil** 读取整个文件**"></a><strong>ioutil**</strong> 读取整个文件**</h4><p>io/ioutil包的ReadFile方法能够读取完整的文件，只需要将文件名作为参数传入。</p>
+<p>package main</p>
+<p><strong>import</strong> (</p>
+<p>&quot;fmt&quot;</p>
+<p>&quot;io/ioutil&quot;</p>
+<p>)</p>
+<p><em>// ioutil.ReadFile__读取整个文件</em></p>
+<p>func <strong>main</strong> () {</p>
+<p>content, err := ioutil.ReadFile(&quot;./main.go&quot;)</p>
+<p><strong>if</strong> err != nil {</p>
+<p>fmt.Println(&quot;read file failed, err:&quot;, err)</p>
+<p><strong>return</strong></p>
+<p>}</p>
+<p>fmt.Println(string(content))</p>
+<p>}</p>
+<h2 id="文件写入操作"><a href="#文件写入操作" class="headerlink" title="文件写入操作"></a><strong>文件写入操作</strong></h2><p>os.OpenFile()函数能够以指定模式打开文件，从而实现文件写入相关功能。</p>
+<p>func <strong>OpenFile</strong> (name string, flag <strong>int</strong> , perm FileMode) (*File, error) {</p>
+<p>…</p>
+<p>}</p>
+<p>其中：</p>
+<p>name：要打开的文件名 flag：打开文件的模式。 模式有以下几种：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>os.O_WRONLY</td>
+<td>只写</td>
+</tr>
+<tr>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>os.O_CREATE</td>
+<td>创建文件</td>
+</tr>
+<tr>
+<td>os.O_RDONLY</td>
+<td>只读</td>
+</tr>
+<tr>
+<td>os.O_RDWR</td>
+<td>读写</td>
+</tr>
+<tr>
+<td>os.O_TRUNC</td>
+<td>清空</td>
+</tr>
+<tr>
+<td>os.O_APPEND</td>
+<td>追加</td>
+</tr>
+</tbody></table>
+<p>perm：文件权限，一个八进制数。r（读）04，w（写）02，x（执行）01。</p>
+<h3 id="Write-和-WriteString"><a href="#Write-和-WriteString" class="headerlink" title="Write** 和 **WriteString"></a><strong>Write**</strong> 和 <strong>**WriteString</strong></h3><p>func <strong>main</strong> () {</p>
+<p>file, err := os.OpenFile(&quot;xx.txt&quot;, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0666)</p>
+<p><strong>if</strong> err != nil {</p>
+<p>fmt.Println(&quot;open file failed, err:&quot;, err)</p>
+<p><strong>return</strong></p>
+<p>}</p>
+<p>defer file.Close()</p>
+<p>str := &quot;hello go&quot;</p>
+<p>file.Write([] <strong>byte</strong> (str)) <em>//__写入字节切片数据</em></p>
+<p>file.WriteString(&quot;hello go&quot;) <em>//__直接写入字符串数据</em></p>
+<p>}</p>
+<h3 id="bufio-NewWriter"><a href="#bufio-NewWriter" class="headerlink" title="bufio.NewWriter"></a><strong>bufio.NewWriter</strong></h3><p>func <strong>main</strong> () {</p>
+<p>file, err := os.OpenFile(&quot;xx.txt&quot;, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0666)</p>
+<p><strong>if</strong> err != nil {</p>
+<p>fmt.Println(&quot;open file failed, err:&quot;, err)</p>
+<p><strong>return</strong></p>
+<p>}</p>
+<p>defer file.Close()</p>
+<p>writer := bufio.NewWriter(file)</p>
+<p><strong>for</strong> i := 0; i &amp;lt; 10; i++ {</p>
+<p>writer.WriteString(&quot;hello word\n&quot;) <em>//__将数据先写入缓存</em></p>
+<p>}</p>
+<p>writer.Flush() <em>//__将缓存中的内容写入文件</em></p>
+<p>}</p>
+<h3 id="ioutil-WriteFile"><a href="#ioutil-WriteFile" class="headerlink" title="ioutil.WriteFile"></a><strong>ioutil.WriteFile</strong></h3><p><strong>func**</strong> main**() {</p>
+<p>str := &quot;hello word&quot;</p>
+<p>err := ioutil.WriteFile(&quot;./xx.txt&quot;, []byte(str), 0666)</p>
+<p>if err != nil {</p>
+<p>fmt.Println(&quot;write file failed, err:&quot;, err)</p>
+<p>return</p>
+<p>}</p>
+<p>}</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a><strong>例子</strong></h2><h3 id="copyFile"><a href="#copyFile" class="headerlink" title="copyFile"></a><strong>copyFile</strong></h3><p>借助io.Copy()实现一个拷贝文件函数。</p>
+<p><em>// CopyFile</em> _拷贝文件函数_func <strong>CopyFile</strong> (dstName, srcName <strong>string</strong> ) (written int64, err error) {</p>
+<p><em>//</em> <em>以读方式打开源文件</em></p>
+<p>src, err := os.Open(srcName)</p>
+<p><strong>if</strong> err != nil {</p>
+<p>fmt.Printf(&quot;open %s failed, err:%v.\n&quot;, srcName, err)</p>
+<p><strong>return</strong></p>
+<p>}</p>
+<p>defer src.Close()</p>
+<p><em>//</em> <em>以写 <strong>|</strong> 创建的方式打开目标文件</em></p>
+<p>dst, err := os.OpenFile(dstName, os.O_WRONLY|os.O_CREATE, 0644)</p>
+<p><strong>if</strong> err != nil {</p>
+<p>fmt.Printf(&quot;open %s failed, err:%v.\n&quot;, dstName, err)</p>
+<p><strong>return</strong></p>
+<p>}</p>
+<p>defer dst.Close()</p>
+<p><strong>return</strong> io.Copy(dst, src) <em>// <strong>调用</strong> io.Copy()__拷贝内容</em></p>
+<p>}func <strong>main</strong> () {</p>
+<p>_, err := CopyFile(&quot;dst.txt&quot;, &quot;src.txt&quot;)</p>
+<p><strong>if</strong> err != nil {</p>
+<p>fmt.Println(&quot;copy file failed, err:&quot;, err)</p>
+<p><strong>return</strong></p>
+<p>}</p>
+<p>fmt.Println(&quot;copy done!&quot;)</p>
+<p>}</p>
+<h3 id="实现一个-cat-命令"><a href="#实现一个-cat-命令" class="headerlink" title="实现一个** cat **命令"></a><strong>实现一个**</strong> cat <strong>**命令</strong></h3><p>使用文件操作相关知识，模拟实现linux平台cat命令的功能。</p>
+<p><strong>package</strong> main</p>
+<p><strong>import</strong> (</p>
+<p>&quot;bufio&quot;</p>
+<p>&quot;flag&quot;</p>
+<p>&quot;fmt&quot;</p>
+<p>&quot;io&quot;</p>
+<p>&quot;os&quot;</p>
+<p>)</p>
+<p><em>// cat__命令实现</em></p>
+<p>func <strong>cat</strong> (r *bufio.Reader) {</p>
+<p><strong>for</strong> {</p>
+<p>buf, err := r.ReadBytes(&#39;\n&#39;) <em>//__注意是字符</em></p>
+<p><strong>if</strong> err == io.EOF {</p>
+<p><strong>break</strong></p>
+<p>}</p>
+<p>fmt.Fprintf(os.Stdout, &quot;%s&quot;, buf)</p>
+<p>}</p>
+<p>}</p>
+<p>func <strong>main</strong> () {</p>
+<p>flag.Parse() <em>//</em> <em>解析命令行参数</em></p>
+<p><strong>if</strong> flag.NArg() == 0 {</p>
+<p><em>//</em> <em>如果没有参数默认从标准输入读取内容</em></p>
+<p>cat(bufio.NewReader(os.Stdin))</p>
+<p>}</p>
+<p><em>//</em> <em>依次读取每个指定文件的内容并打印到终端</em></p>
+<p><strong>for</strong> i := 0; i &amp;lt; flag.NArg(); i++ {</p>
+<p>f, err := os.Open(flag.Arg(i))</p>
+<p><strong>if</strong> err != nil {</p>
+<p>fmt.Fprintf(os.Stdout, &quot;reading from %s failed, err:%v\n&quot;, flag.Arg(i), err)</p>
+<p><strong>continue</strong></p>
+<p>}</p>
+<p>cat(bufio.NewReader(f))</p>
+<p>}</p>
+<p>}</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:yjw-1017@outlook.com">vio-jw</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://1py1vm.coding-pages.com/2021/02/19/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">http://1py1vm.coding-pages.com/2021/02/19/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://1py1vm.coding-pages.com" target="_blank">Jw's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/golang/">golang</a></div><div class="post_share"><div class="social-share" data-image="https://wallroom.io/img/1920x1080/bg-12d9d47.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2021/02/19/%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5for/"><img class="prev_cover lazyload" data-src="https://wallroom.io/img/1920x1080/bg-2c050a7.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">循环语句for</div></div></a></div><div class="next-post pull_right"><a href="/2021/02/19/%E5%BE%AA%E7%8E%AF%E6%8E%A7%E5%88%B6Goto%E3%80%81Break%E3%80%81Continue/"><img class="next_cover lazyload" data-src="https://wallroom.io/img/1920x1080/bg-14286ab.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">循环控制Goto、Break、Continue</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2021/01/07/golang内置类型和函数/" title="golang内置类型和函数"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-119e935.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-07</div><div class="relatedPosts_title">golang内置类型和函数</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/08/Init函数和main函数/" title="Init函数和main函数"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-0d4abee.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-08</div><div class="relatedPosts_title">Init函数和main函数</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/08/命令/" title="命令"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-0cf6fd0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-08</div><div class="relatedPosts_title">命令</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/09/”基本类型“/" title="基本类型"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-0ecf3b1.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-09</div><div class="relatedPosts_title">基本类型</div></div></a></div><div class="relatedPosts_item"><a href="/2021/02/19/GMP原理和调度/" title="GMP原理和调度"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-12d9d47.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-02-19</div><div class="relatedPosts_title">GMP原理和调度</div></div></a></div><div class="relatedPosts_item"><a href="/2021/02/19/Channel/" title="Channel"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-05e3c1f.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-02-19</div><div class="relatedPosts_title">Channel</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: 'iEgNuNBCTaihslibuDwal7C5-gzGzoHsz',
+  appKey: 'm6S8TQcmY7gNtxgbvUV8dBhp',
+  placeholder: '分享你的想法吧~',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" style="background-image: url(https://wallroom.io/img/1920x1080/bg-00082f7.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By vio-jw</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="icp"><a><img class="icp-icon" src="/img/icp.png"/><span>闽ICP备20007536</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="ribbon_piao" mobile="true" src="/js/third-party/piao.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/click_heart.js"></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script></body></html>

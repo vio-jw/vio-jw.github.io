@@ -1,0 +1,418 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>接口 | Jw's Blog</title><meta name="description" content="接口"><meta name="keywords" content="golang"><meta name="author" content="vio-jw,yjw-1017@outlook.com"><meta name="copyright" content="vio-jw"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/u=1081158815,3939059762&fm=26&gp=0.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="接口"><meta name="twitter:description" content="接口"><meta name="twitter:image" content="https://wallroom.io/img/1920x1080/bg-017e8c1.png"><meta property="og:type" content="article"><meta property="og:title" content="接口"><meta property="og:url" content="http://1py1vm.coding-pages.com/2021/02/19/%E6%8E%A5%E5%8F%A3/"><meta property="og:site_name" content="Jw's Blog"><meta property="og:description" content="接口"><meta property="og:image" content="https://wallroom.io/img/1920x1080/bg-017e8c1.png"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://1py1vm.coding-pages.com/2021/02/19/%E6%8E%A5%E5%8F%A3/"><link rel="prev" title="方法集" href="http://1py1vm.coding-pages.com/2021/02/19/%E6%96%B9%E6%B3%95%E9%9B%86/"><link rel="next" title="匿名函数" href="http://1py1vm.coding-pages.com/2021/02/19/%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0/"><link rel="stylesheet" href="https://fonts.geekzu.org/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: {"text":"正心,取势,明道,优术,修身,齐家,治国,平天下,践行,合众","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/20170917230838_HPMLr.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">49</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">32</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 爱好</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#接口"><span class="toc-number">1.</span> <span class="toc-text">接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#接口-1"><span class="toc-number">1.1.</span> <span class="toc-text">接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#接口类型"><span class="toc-number">1.1.1.</span> <span class="toc-text">接口类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么要使用接口"><span class="toc-number">1.1.2.</span> <span class="toc-text">为什么要使用接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接口的定义"><span class="toc-number">1.1.3.</span> <span class="toc-text">接口的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现接口的条件"><span class="toc-number">1.1.4.</span> <span class="toc-text">实现接口的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接口类型变量"><span class="toc-number">1.1.5.</span> <span class="toc-text">接口类型变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#值接收者和指针接收者实现接口的区别"><span class="toc-number">1.1.6.</span> <span class="toc-text">值接收者和指针接收者实现接口的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#值接收者实现接口"><span class="toc-number">1.1.7.</span> <span class="toc-text">值接收者实现接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#指针接收者实现接口"><span class="toc-number">1.1.8.</span> <span class="toc-text">指针接收者实现接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下面的代码是一个比较好的面试题"><span class="toc-number">1.1.9.</span> <span class="toc-text">下面的代码是一个比较好的面试题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型与接口的关系"><span class="toc-number">1.2.</span> <span class="toc-text">类型与接口的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一个类型实现多个接口"><span class="toc-number">1.2.1.</span> <span class="toc-text">一个类型实现多个接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多个类型实现同一接口"><span class="toc-number">1.2.2.</span> <span class="toc-text">多个类型实现同一接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接口嵌套"><span class="toc-number">1.2.3.</span> <span class="toc-text">接口嵌套</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空接口"><span class="toc-number">1.3.</span> <span class="toc-text">空接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#空接口的定义"><span class="toc-number">1.3.1.</span> <span class="toc-text">空接口的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#空接口的应用"><span class="toc-number">1.3.2.</span> <span class="toc-text">空接口的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#空接口作为函数的参数"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">空接口作为函数的参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#空接口作为-map-的值"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">空接口作为** map **的值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类型断言"><span class="toc-number">1.3.3.</span> <span class="toc-text">类型断言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#接口值"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">接口值</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://wallroom.io/img/1920x1080/bg-017e8c1.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Jw's Blog</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 爱好</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">接口</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2021-02-19 22:39:19"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2021-02-19</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2021-05-09 22:57:38"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2021-05-09</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/golang/">golang</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2021/02/19/%E6%8E%A5%E5%8F%A3/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2021/02/19/%E6%8E%A5%E5%8F%A3/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><p>#</p>
+<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>接口（interface）定义了一个对象的行为规范，只定义规范不实现，由具体的对象来实现规范的细节。</p>
+<h2 id="接口-1"><a href="#接口-1" class="headerlink" title="接口"></a><strong>接口</strong></h2><h3 id="接口类型"><a href="#接口类型" class="headerlink" title="接口类型"></a><strong>接口类型</strong></h3><p>在Go语言中接口（interface）是一种类型，一种抽象的类型。</p>
+<p>interface是一组method的集合，是duck-type programming的一种体现。接口做的事情就像是定义一个协议（规则），只要一台机器有洗衣服和甩干的功能，我就称它为洗衣机。不关心属性（数据），只关心行为（方法）。</p>
+<p>为了保护你的Go语言职业生涯，请牢记接口（interface）是一种类型。</p>
+<h3 id="为什么要使用接口"><a href="#为什么要使用接口" class="headerlink" title="为什么要使用接口"></a><strong>为什么要使用接口</strong></h3><p>type Cat <strong>struct</strong> {}</p>
+<p>func (c Cat) Say() <strong>string</strong> { <strong>return</strong>&quot;喵喵喵&quot; }</p>
+<p>type Dog <strong>struct</strong> {}</p>
+<p>func (d Dog) Say() <strong>string</strong> { <strong>return</strong>&quot;汪汪汪&quot; }</p>
+<p>func <strong>main</strong> () {</p>
+<p>c := Cat{}</p>
+<p>fmt.Println(&quot;猫:&quot;, c.Say())</p>
+<p>d := Dog{}</p>
+<p>fmt.Println(&quot;狗:&quot;, d.Say())</p>
+<p>}</p>
+<p>上面的代码中定义了猫和狗，然后它们都会叫，你会发现main函数中明显有重复的代码，如果我们后续再加上猪、青蛙等动物的话，我们的代码还会一直重复下去。那我们能不能把它们当成&quot;能叫的动物&quot;来处理呢？</p>
+<p>像类似的例子在我们编程过程中会经常遇到：</p>
+<p>比如一个网上商城可能使用支付宝、微信、银联等方式去在线支付，我们能不能把它们当成&quot;支付方式&quot;来处理呢？</p>
+<p>比如三角形，四边形，圆形都能计算周长和面积，我们能不能把它们当成&quot;图形&quot;来处理呢？</p>
+<p>比如销售、行政、程序员都能计算月薪，我们能不能把他们当成&quot;员工&quot;来处理呢？</p>
+<p>Go语言中为了解决类似上面的问题，就设计了接口这个概念。接口区别于我们之前所有的具体类型，接口是一种抽象的类型。当你看到一个接口类型的值时，你不知道它是什么，唯一知道的是通过它的方法能做什么。</p>
+<h3 id="接口的定义"><a href="#接口的定义" class="headerlink" title="接口的定义"></a><strong>接口的定义</strong></h3><p>Go语言提倡面向接口编程。</p>
+<p>接口是一个或多个方法签名的集合。</p>
+<p>任何类型的方法集中只要拥有该接口&#39;对应的全部方法&#39;签名。</p>
+<p>就表示它 &quot;实现&quot;了该接口，无须在该类型上显式声明实现了哪个接口。</p>
+<p>这称为Structural Typing。</p>
+<p>所谓对应方法，是指有相同名称、参数列表 (不包括参数名) 以及返回值。</p>
+<p>当然，该类型还可以有其他方法。</p>
+<p>接口只有方法声明，没有实现，没有数据字段。</p>
+<p>接口可以匿名嵌入其他接口，或嵌入到结构中。</p>
+<p>对象赋值给接口时，会发生拷贝，而接口内部存储的是指向这个复制品的指针，既无法修改复制品的状态，也无法获取指针。</p>
+<p>只有当接口存储的类型和对象都为nil时，接口才等于nil。</p>
+<p>接口调用不会做receiver的自动转换。</p>
+<p>接口同样支持匿名字段方法。</p>
+<p>接口也可实现类似OOP中的多态。</p>
+<p>空接口可以作为任何类型数据的容器。</p>
+<p>一个类型可实现多个接口。</p>
+<p>接口命名习惯以 er 结尾。</p>
+<p>每个接口由数个方法组成，接口的定义格式如下：</p>
+<p>type 接口类型名 <strong>interface</strong> {</p>
+<p>方法名1( 参数列表1 ) 返回值列表1</p>
+<p>方法名2( 参数列表2 ) 返回值列表2</p>
+<p>…</p>
+<p>}</p>
+<p>其中：</p>
+<p>1.接口名：使用type将接口定义为自定义的类型名。Go语言的接口在命名时，一般会在单词后面添加er，如有写操作的接口叫Writer，有字符串功能的接口叫Stringer等。接口名最好要能突出该接口的类型含义。</p>
+<p>2.方法名：当方法名首字母是大写且这个接口类型名首字母也是大写时，这个方法可以被接口所在的包（package）之外的代码访问。</p>
+<p>3.参数列表、返回值列表：参数列表和返回值列表中的参数变量名可以省略。</p>
+<p>举个例子：</p>
+<p>type writer <strong>interface</strong> {</p>
+<p>Write([] <strong>byte</strong> ) error</p>
+<p>}</p>
+<p>当你看到这个接口类型的值时，你不知道它是什么，唯一知道的就是可以通过它的Write方法来做一些事情。</p>
+<h3 id="实现接口的条件"><a href="#实现接口的条件" class="headerlink" title="实现接口的条件"></a><strong>实现接口的条件</strong></h3><p>一个对象只要全部实现了接口中的方法，那么就实现了这个接口。换句话说，接口就是一个需要实现的方法列表。</p>
+<p>我们来定义一个Sayer接口：</p>
+<p><em>// Sayer</em> <em>接口</em></p>
+<p>type Sayer <strong>interface</strong> {</p>
+<p>say()</p>
+<p>}</p>
+<p>定义dog和cat两个结构体：</p>
+<p>type dog struct {}</p>
+<p>type cat struct {}</p>
+<p>因为Sayer接口里只有一个say方法，所以我们只需要给dog和cat 分别实现say方法就可以实现Sayer接口了。</p>
+<p><em>// dog <strong>实现了</strong> Sayer__接口</em></p>
+<p>func (d dog) say() {</p>
+<p>fmt.Println(&quot;汪汪汪&quot;)</p>
+<p>}</p>
+<p><em>// cat <strong>实现了</strong> Sayer__接口</em></p>
+<p>func (c cat) say() {</p>
+<p>fmt.Println(&quot;喵喵喵&quot;)</p>
+<p>}</p>
+<p>接口的实现就是这么简单，只要实现了接口中的所有方法，就实现了这个接口。</p>
+<h3 id="接口类型变量"><a href="#接口类型变量" class="headerlink" title="接口类型变量"></a><strong>接口类型变量</strong></h3><p>那实现了接口有什么用呢？</p>
+<p>接口类型变量能够存储所有实现了该接口的实例。 例如上面的示例中，Sayer类型的变量能够存储dog和cat类型的变量。</p>
+<p>func <strong>main</strong> () {</p>
+<p><strong>var</strong> x Sayer <em>//</em> <em>声明一个 <strong>Sayer</strong> 类型的变量__x</em></p>
+<p>a := cat{} <em>//</em> <em>实例化一个__cat</em></p>
+<p>b := dog{} <em>//</em> <em>实例化一个__dog</em></p>
+<p>x = a <em>//</em> <em>可以把 <strong>cat</strong> 实例直接赋值给__x</em></p>
+<p>x.say() <em>//</em> <em>喵喵喵</em></p>
+<p>x = b <em>//</em> <em>可以把 <strong>dog</strong> 实例直接赋值给__x</em></p>
+<p>x.say() <em>//</em> <em>汪汪汪</em></p>
+<p>}</p>
+<h3 id="值接收者和指针接收者实现接口的区别"><a href="#值接收者和指针接收者实现接口的区别" class="headerlink" title="值接收者和指针接收者实现接口的区别"></a><strong>值接收者和指针接收者实现接口的区别</strong></h3><p>使用值接收者实现接口和使用指针接收者实现接口有什么区别呢？接下来我们通过一个例子看一下其中的区别。</p>
+<p>我们有一个Mover接口和一个dog结构体。</p>
+<p>type Mover <strong>interface</strong> {</p>
+<p>move()</p>
+<p>}</p>
+<p>type dog <strong>struct</strong> {}</p>
+<h3 id="值接收者实现接口"><a href="#值接收者实现接口" class="headerlink" title="值接收者实现接口"></a><strong>值接收者实现接口</strong></h3><p>func (d dog) <strong>move</strong> () {</p>
+<p>fmt.Println(&quot;狗会动&quot;)</p>
+<p>}</p>
+<p>此时实现接口的是dog类型：</p>
+<p>func <strong>main</strong> () {</p>
+<p><strong>var</strong> x Mover</p>
+<p><strong>var</strong> wangcai = dog{} <em>//</em> <em>旺财是 <strong>dog</strong> 类型</em></p>
+<p>x = wangcai <em>// x <strong>可以接收</strong> dog__类型</em></p>
+<p><strong>var</strong> fugui = &amp;dog{} <em>//</em> <em>富贵是 <strong>*dog</strong> 类型</em></p>
+<p>x = fugui <em>// x <strong>可以接收</strong> *dog__类型</em></p>
+<p>x.move()</p>
+<p>}</p>
+<p>从上面的代码中我们可以发现，使用值接收者实现接口之后，不管是dog结构体还是结构体指针*dog类型的变量都可以赋值给该接口变量。因为Go语言中有对指针类型变量求值的语法糖，dog指针fugui内部会自动求值*fugui。</p>
+<h3 id="指针接收者实现接口"><a href="#指针接收者实现接口" class="headerlink" title="指针接收者实现接口"></a><strong>指针接收者实现接口</strong></h3><p>同样的代码我们再来测试一下使用指针接收者有什么区别：</p>
+<p>func (d *dog) move() {</p>
+<p>fmt.Println(&quot;狗会动&quot;)</p>
+<p>}func <strong>main</strong> () {</p>
+<p><strong>var</strong> x Mover</p>
+<p><strong>var</strong> wangcai = dog{} <em>//</em> <em>旺财是 <strong>dog</strong> 类型</em></p>
+<p>x = wangcai <em>// x <strong>不可以接收</strong> dog__类型</em></p>
+<p><strong>var</strong> fugui = &amp;dog{} <em>//</em> <em>富贵是 <strong>*dog</strong> 类型</em></p>
+<p>x = fugui <em>// x <strong>可以接收</strong> *dog__类型</em></p>
+<p>}</p>
+<p>此时实现Mover接口的是*dog类型，所以不能给x传入dog类型的wangcai，此时x只能存储*dog类型的值。</p>
+<h3 id="下面的代码是一个比较好的面试题"><a href="#下面的代码是一个比较好的面试题" class="headerlink" title="下面的代码是一个比较好的面试题"></a><strong>下面的代码是一个比较好的面试题</strong></h3><p>请问下面的代码是否能通过编译？</p>
+<p>type People <strong>interface</strong> {</p>
+<p>Speak( <strong>string</strong> ) <strong>string</strong></p>
+<p>}</p>
+<p>type Student <strong>struct</strong> {}</p>
+<p>func (stu *Student) Speak(think <strong>string</strong> ) (talk <strong>string</strong> ) {</p>
+<p><strong>if</strong> think == &quot;sb&quot; {</p>
+<p>talk = &quot;你是个大帅比&quot;</p>
+<p>} <strong>else</strong> {</p>
+<p>talk = &quot;您好&quot;</p>
+<p>}</p>
+<p><strong>return</strong></p>
+<p>}</p>
+<p>func <strong>main</strong> () {</p>
+<p><strong>var</strong> peo People = Student{}</p>
+<p>think := &quot;bitch&quot;</p>
+<p>fmt.Println(peo.Speak(think))</p>
+<p>}</p>
+<h2 id="类型与接口的关系"><a href="#类型与接口的关系" class="headerlink" title="类型与接口的关系"></a><strong>类型与接口的关系</strong></h2><h3 id="一个类型实现多个接口"><a href="#一个类型实现多个接口" class="headerlink" title="一个类型实现多个接口"></a><strong>一个类型实现多个接口</strong></h3><p>一个类型可以同时实现多个接口，而接口间彼此独立，不知道对方的实现。 例如，狗可以叫，也可以动。我们就分别定义Sayer接口和Mover接口，如下： Mover接口。</p>
+<p><em>// Sayer</em> <em>接口</em></p>
+<p>type Sayer <strong>interface</strong> {</p>
+<p>say()</p>
+<p>}</p>
+<p><em>// Mover</em> <em>接口</em></p>
+<p>type Mover <strong>interface</strong> {</p>
+<p>move()</p>
+<p>}</p>
+<p>dog既可以实现Sayer接口，也可以实现Mover接口。</p>
+<p>type dog <strong>struct</strong> {</p>
+<p>name <strong>string</strong></p>
+<p>}</p>
+<p><em>//</em> <em>实现 <strong>Sayer</strong> 接口</em></p>
+<p>func (d dog) say() {</p>
+<p>fmt.Printf(&quot;%s会叫汪汪汪\n&quot;, d.name)</p>
+<p>}</p>
+<p><em>//</em> <em>实现 <strong>Mover</strong> 接口</em></p>
+<p>func (d dog) move() {</p>
+<p>fmt.Printf(&quot;%s会动\n&quot;, d.name)</p>
+<p>}</p>
+<p>func <strong>main</strong> () {</p>
+<p><strong>var</strong> x Sayer</p>
+<p><strong>var</strong> y Mover</p>
+<p><strong>var</strong> a = dog{name: &quot;旺财&quot;}</p>
+<p>x = a</p>
+<p>y = a</p>
+<p>x.say()</p>
+<p>y.move()</p>
+<p>}</p>
+<h3 id="多个类型实现同一接口"><a href="#多个类型实现同一接口" class="headerlink" title="多个类型实现同一接口"></a><strong>多个类型实现同一接口</strong></h3><p>Go语言中不同的类型还可以实现同一接口 首先我们定义一个Mover接口，它要求必须由一个move方法。</p>
+<p><em>// Mover</em> <em>接口</em></p>
+<p>type Mover <strong>interface</strong> {</p>
+<p>move()</p>
+<p>}</p>
+<p>例如狗可以动，汽车也可以动，可以使用如下代码实现这个关系：</p>
+<p>type dog <strong>struct</strong> {</p>
+<p>name string</p>
+<p>}</p>
+<p>type car <strong>struct</strong> {</p>
+<p>brand string</p>
+<p>}</p>
+<p><em>// dog <strong>类型实现</strong> Mover__接口</em></p>
+<p>func (d dog) move() {</p>
+<p>fmt.Printf(&quot;%s会跑\n&quot;, d.name)</p>
+<p>}</p>
+<p><em>// car <strong>类型实现</strong> Mover__接口</em></p>
+<p>func (c car) move() {</p>
+<p>fmt.Printf(&quot;%s速度70迈\n&quot;, c.brand)</p>
+<p>}</p>
+<p>这个时候我们在代码中就可以把狗和汽车当成一个会动的物体来处理了，不再需要关注它们具体是什么，只需要调用它们的move方法就可以了。</p>
+<p>func <strong>main</strong> () {</p>
+<p><strong>var</strong> x Mover</p>
+<p><strong>var</strong> a = dog{name: &quot;旺财&quot;}</p>
+<p><strong>var</strong> b = car{brand: &quot;保时捷&quot;}</p>
+<p>x = a</p>
+<p>x.move()</p>
+<p>x = b</p>
+<p>x.move()</p>
+<p>}</p>
+<p>上面的代码执行结果如下：</p>
+<p>旺财会跑</p>
+<p>保时捷速度70迈</p>
+<p>并且一个接口的方法，不一定需要由一个类型完全实现，接口的方法可以通过在类型中嵌入其他类型或者结构体来实现。</p>
+<p><em>// WashingMachine</em> <em>洗衣机</em></p>
+<p>type WashingMachine <strong>interface</strong> {</p>
+<p>wash()</p>
+<p>dry()</p>
+<p>}</p>
+<p><em>//</em> <em>甩干器</em></p>
+<p>type dryer <strong>struct</strong> {}</p>
+<p><em>//</em> <em>实现 <strong>WashingMachine</strong> 接口的<strong>dry()</strong>方法</em></p>
+<p>func (d dryer) dry() {</p>
+<p>fmt.Println(&quot;甩一甩&quot;)</p>
+<p>}</p>
+<p><em>//</em> <em>海尔洗衣机</em></p>
+<p>type haier <strong>struct</strong> {</p>
+<p>dryer <em>//__嵌入甩干器</em></p>
+<p>}</p>
+<p><em>//</em> <em>实现 <strong>WashingMachine</strong> 接口的<strong>wash()</strong>方法</em></p>
+<p>func (h haier) wash() {</p>
+<p>fmt.Println(&quot;洗刷刷&quot;)</p>
+<p>}</p>
+<h3 id="接口嵌套"><a href="#接口嵌套" class="headerlink" title="接口嵌套"></a><strong>接口嵌套</strong></h3><p>接口与接口间可以通过嵌套创造出新的接口。</p>
+<p><em>// Sayer</em> <em>接口</em></p>
+<p>type Sayer <strong>interface</strong> {</p>
+<p>say()</p>
+<p>}</p>
+<p><em>// Mover</em> <em>接口</em></p>
+<p>type Mover <strong>interface</strong> {</p>
+<p>move()</p>
+<p>}</p>
+<p><em>//</em> <em>接口嵌套</em></p>
+<p>type animal <strong>interface</strong> {</p>
+<p>Sayer</p>
+<p>Mover</p>
+<p>}</p>
+<p>嵌套得到的接口的使用与普通接口一样，这里我们让cat实现animal接口：</p>
+<p>type cat <strong>struct</strong> {</p>
+<p>name <strong>string</strong></p>
+<p>}</p>
+<p>func (c cat) say() {</p>
+<p>fmt.Println(&quot;喵喵喵&quot;)</p>
+<p>}</p>
+<p>func (c cat) move() {</p>
+<p>fmt.Println(&quot;猫会动&quot;)</p>
+<p>}</p>
+<p>func <strong>main</strong> () {</p>
+<p><strong>var</strong> x animal</p>
+<p>x = cat{name: &quot;花花&quot;}</p>
+<p>x.move()</p>
+<p>x.say()</p>
+<p>}</p>
+<h2 id="空接口"><a href="#空接口" class="headerlink" title="空接口"></a><strong>空接口</strong></h2><h3 id="空接口的定义"><a href="#空接口的定义" class="headerlink" title="空接口的定义"></a><strong>空接口的定义</strong></h3><p>空接口是指没有定义任何方法的接口。因此任何类型都实现了空接口。</p>
+<p>空接口类型的变量可以存储任意类型的变量。</p>
+<p>func <strong>main</strong> () {</p>
+<p><em>//</em> <em>定义一个空接口__x</em></p>
+<p><strong>var</strong> x <strong>interface</strong> {}</p>
+<p>s := &quot;pprof.cn&quot;</p>
+<p>x = s</p>
+<p>fmt.Printf(&quot;type:%T value:%v\n&quot;, x, x)</p>
+<p>i := 100</p>
+<p>x = i</p>
+<p>fmt.Printf(&quot;type:%T value:%v\n&quot;, x, x)</p>
+<p>b := true</p>
+<p>x = b</p>
+<p>fmt.Printf(&quot;type:%T value:%v\n&quot;, x, x)</p>
+<p>}</p>
+<h3 id="空接口的应用"><a href="#空接口的应用" class="headerlink" title="空接口的应用"></a><strong>空接口的应用</strong></h3><h4 id="空接口作为函数的参数"><a href="#空接口作为函数的参数" class="headerlink" title="空接口作为函数的参数"></a><strong>空接口作为函数的参数</strong></h4><p>使用空接口实现可以接收任意类型的函数参数。</p>
+<p><em>//</em> _空接口作为函数参数_func <strong>show</strong> (a <strong>interface</strong> {}) {</p>
+<p>fmt.Printf(&quot;type:%T value:%v\n&quot;, a, a)</p>
+<p>}</p>
+<h4 id="空接口作为-map-的值"><a href="#空接口作为-map-的值" class="headerlink" title="空接口作为** map **的值"></a><strong>空接口作为**</strong> map <strong>**的值</strong></h4><p>使用空接口实现可以保存任意值的字典。</p>
+<p><em>//</em> <em>空接口作为 <strong>map</strong> 值</em></p>
+<p><strong>var</strong> studentInfo = make(map[<strong>string</strong>] <strong>interface</strong> {})</p>
+<p>studentInfo[&quot;name&quot;] = &quot;李白&quot;</p>
+<p>studentInfo[&quot;age&quot;] = 18</p>
+<p>studentInfo[&quot;married&quot;] = false</p>
+<p>fmt.Println(studentInfo)</p>
+<h3 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a><strong>类型断言</strong></h3><p>空接口可以存储任意类型的值，那我们如何获取其存储的具体数据呢？</p>
+<h4 id="接口值"><a href="#接口值" class="headerlink" title="接口值"></a><strong>接口值</strong></h4><p>一个接口的值（简称接口值）是由一个具体类型和具体类型的值两部分组成的。这两部分分别称为接口的动态类型和动态值。</p>
+<p>我们来看一个具体的例子：</p>
+<p>var w io.Writer</p>
+<p>w = os.Stdout</p>
+<p>w = new(bytes.Buffer)</p>
+<p>w = nil</p>
+<p>请看下图分解：</p>
+<p><img src="/" class="lazyload" data-src="RackMultipart20210430-4-1gw7h2f_html_d57c929799588794.png"  alt=""></p>
+<p>想要判断空接口中的值这个时候就可以使用类型断言，其语法格式：</p>
+<p>x.(T)</p>
+<p>其中：</p>
+<p>x：表示类型为 <strong>interface</strong> {}的变量</p>
+<p>T：表示断言x可能是的类型。</p>
+<p>该语法返回两个参数，第一个参数是x转化为T类型后的变量，第二个值是一个布尔值，若为true则表示断言成功，为false则表示断言失败。</p>
+<p>举个例子：</p>
+<p>func <strong>main</strong> () {</p>
+<p><strong>var</strong> x <strong>interface</strong> {}</p>
+<p>x = &quot;pprof.cn&quot;</p>
+<p>v, ok := x.( <strong>string</strong> )</p>
+<p><strong>if</strong> ok {</p>
+<p>fmt.Println(v)</p>
+<p>} <strong>else</strong> {</p>
+<p>fmt.Println(&quot;类型断言失败&quot;)</p>
+<p>}</p>
+<p>}</p>
+<p>上面的示例中如果要断言多次就需要写多个if判断，这个时候我们可以使用switch语句来实现：</p>
+<p>func <strong>justifyType</strong> (x <strong>interface</strong> {}) {</p>
+<p><strong>switch</strong> v := x.(type) {</p>
+<p><strong>case**</strong> string**:</p>
+<p>fmt.Printf(&quot;x is a string，value is %v\n&quot;, v)</p>
+<p><strong>case**</strong> int**:</p>
+<p>fmt.Printf(&quot;x is a int is %v\n&quot;, v)</p>
+<p><strong>case**</strong> bool**:</p>
+<p>fmt.Printf(&quot;x is a bool is %v\n&quot;, v)</p>
+<p><strong>default</strong> :</p>
+<p>fmt.Println(&quot;unsupport type！&quot;)</p>
+<p>}</p>
+<p>}</p>
+<p>因为空接口可以存储任意类型值的特点，所以空接口在Go语言中的使用十分广泛。</p>
+<p>关于接口需要注意的是，只有当有两个或两个以上的具体类型必须以相同的方式进行处理时才需要定义接口。不要为了接口而写接口，那样只会增加不必要的抽象，导致不必要的运行时损耗。</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:yjw-1017@outlook.com">vio-jw</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://1py1vm.coding-pages.com/2021/02/19/%E6%8E%A5%E5%8F%A3/">http://1py1vm.coding-pages.com/2021/02/19/%E6%8E%A5%E5%8F%A3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://1py1vm.coding-pages.com" target="_blank">Jw's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/golang/">golang</a></div><div class="post_share"><div class="social-share" data-image="https://wallroom.io/img/1920x1080/bg-12d9d47.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2021/02/19/%E6%96%B9%E6%B3%95%E9%9B%86/"><img class="prev_cover lazyload" data-src="https://wallroom.io/img/1920x1080/bg-02fd146.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">方法集</div></div></a></div><div class="next-post pull_right"><a href="/2021/02/19/%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0/"><img class="next_cover lazyload" data-src="https://wallroom.io/img/1920x1080/bg-28d246c.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">匿名函数</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2021/01/07/golang内置类型和函数/" title="golang内置类型和函数"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-119e935.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-07</div><div class="relatedPosts_title">golang内置类型和函数</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/08/Init函数和main函数/" title="Init函数和main函数"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-0d4abee.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-08</div><div class="relatedPosts_title">Init函数和main函数</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/08/命令/" title="命令"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-0cf6fd0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-08</div><div class="relatedPosts_title">命令</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/09/”基本类型“/" title="基本类型"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-0ecf3b1.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-09</div><div class="relatedPosts_title">基本类型</div></div></a></div><div class="relatedPosts_item"><a href="/2021/02/19/GMP原理和调度/" title="GMP原理和调度"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-12d9d47.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-02-19</div><div class="relatedPosts_title">GMP原理和调度</div></div></a></div><div class="relatedPosts_item"><a href="/2021/02/19/Channel/" title="Channel"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-05e3c1f.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-02-19</div><div class="relatedPosts_title">Channel</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: 'iEgNuNBCTaihslibuDwal7C5-gzGzoHsz',
+  appKey: 'm6S8TQcmY7gNtxgbvUV8dBhp',
+  placeholder: '分享你的想法吧~',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" style="background-image: url(https://wallroom.io/img/1920x1080/bg-017e8c1.png)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By vio-jw</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="icp"><a><img class="icp-icon" src="/img/icp.png"/><span>闽ICP备20007536</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="ribbon_piao" mobile="true" src="/js/third-party/piao.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/click_heart.js"></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script></body></html>

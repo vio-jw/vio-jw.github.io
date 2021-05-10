@@ -1,0 +1,248 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>map底层 | Jw's Blog</title><meta name="description" content="map底层"><meta name="keywords" content="golang"><meta name="author" content="vio-jw,yjw-1017@outlook.com"><meta name="copyright" content="vio-jw"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/u=1081158815,3939059762&fm=26&gp=0.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="map底层"><meta name="twitter:description" content="map底层"><meta name="twitter:image" content="https://wallroom.io/img/1920x1080/bg-2c050a7.jpg"><meta property="og:type" content="article"><meta property="og:title" content="map底层"><meta property="og:url" content="http://1py1vm.coding-pages.com/2021/01/09/map%E5%BA%95%E5%B1%82/"><meta property="og:site_name" content="Jw's Blog"><meta property="og:description" content="map底层"><meta property="og:image" content="https://wallroom.io/img/1920x1080/bg-2c050a7.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://1py1vm.coding-pages.com/2021/01/09/map%E5%BA%95%E5%B1%82/"><link rel="prev" title="结构体" href="http://1py1vm.coding-pages.com/2021/01/09/%E7%BB%93%E6%9E%84%E4%BD%93/"><link rel="next" title="map" href="http://1py1vm.coding-pages.com/2021/01/09/map/"><link rel="stylesheet" href="https://fonts.geekzu.org/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: {"text":"正心,取势,明道,优术,修身,齐家,治国,平天下,践行,合众","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/20170917230838_HPMLr.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">49</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">32</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 爱好</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Map"><span class="toc-number">1.</span> <span class="toc-text">Map</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现原理"><span class="toc-number">2.</span> <span class="toc-text">实现原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是-Map"><span class="toc-number">2.0.1.</span> <span class="toc-text">什么是** Map**</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#key-，-value-存储"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">key** ， value 存储**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hash-冲突"><span class="toc-number">2.0.1.2.</span> <span class="toc-text">hash** 冲突**</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.1.</span> <span class="toc-text">-</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-1"><span class="toc-number">2.2.</span> <span class="toc-text">-</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-2"><span class="toc-number">2.3.</span> <span class="toc-text">-</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-3"><span class="toc-number">2.4.</span> <span class="toc-text">-</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Go-中-Map-的使用"><span class="toc-number">2.4.1.</span> <span class="toc-text">Go** 中 Map 的使用**</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Go-中-Map-的实现原理"><span class="toc-number">2.4.2.</span> <span class="toc-text">Go** 中 Map 的实现原理**</span></a></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://wallroom.io/img/1920x1080/bg-2c050a7.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Jw's Blog</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 爱好</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">map底层</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2021-01-09 22:34:45"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2021-01-09</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2021-05-09 22:35:09"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2021-05-09</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/golang/">golang</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2021/01/09/map%E5%BA%95%E5%B1%82/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2021/01/09/map%E5%BA%95%E5%B1%82/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><p>#</p>
+<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><h1 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h1><h3 id="什么是-Map"><a href="#什么是-Map" class="headerlink" title="什么是** Map**"></a><strong>什么是**</strong> Map**</h3><h4 id="key-，-value-存储"><a href="#key-，-value-存储" class="headerlink" title="key** ， value 存储**"></a><strong>key**</strong> ， <strong><strong>value</strong></strong> 存储**</h4><p>最通俗的话说Map是一种通过key来获取value的一个数据结构，其底层存储方式为数组，在存储时key不能重复，当key重复时，value进行覆盖，我们通过key进行hash运算（可以简单理解为把key转化为一个整形数字）然后对数组的长度取余，得到key存储在数组的哪个下标位置，最后将key和value组装为一个结构体，放入数组下标处，看下图：</p>
+<p><strong>length</strong> = len(array) = 4</p>
+<p>hashkey1 = hash(xiaoming) = 4</p>
+<p>index1 = hashkey1% <strong>length</strong> = 0</p>
+<p>hashkey2 = hash(xiaoli) = 6</p>
+<p>index2 = hashkey2% <strong>length</strong> = 2</p>
+<p><img src="/" class="lazyload" data-src="RackMultipart20210430-4-10ba63a_html_3212b13f256df8c3.png"  alt=""></p>
+<h4 id="hash-冲突"><a href="#hash-冲突" class="headerlink" title="hash** 冲突**"></a><strong>hash**</strong> 冲突**</h4><p>如上图所示，数组一个下标处只能存储一个元素，也就是说一个数组下标只能存储一对key，value, hashkey(xiaoming)=4占用了下标0的位置，假设我们遇到另一个key，hashkey(xiaowang)也是4，这就是hash冲突（不同的key经过hash之后得到的值一样），那么key=xiaowang的怎么存储？<br> hash冲突的常见解决方法</p>
+<p>开放定址法：也就是说当我们存储一个key，value时，发现hashkey(key)的下标已经被别key占用，那我们在这个数组中空间中重新找一个没被占用的存储这个冲突的key，那么没被占用的有很多，找哪个好呢？常见的有线性探测法，线性补偿探测法，随机探测法，这里我们主要说一下线性探测法</p>
+<p>线性探测，字面意思就是按照顺序来，从冲突的下标处开始往后探测，到达数组末尾时，从数组开始处探测，直到找到一个空位置存储这个key，当数组都找不到的情况下回扩容（事实上当数组容量快满的时候就会扩容了）；查找某一个key的时候，找到key对应的下标，比较key是否相等，如果相等直接取出来，否则按照顺寻探测直到碰到一个空位置，说明key不存在。如下图：首先存储key=xiaoming在下标0处，当存储key=xiaowang时，hash冲突了，按照线性探测，存储在下标1处，（红色的线是冲突或者下标已经被占用了） 再者key=xiaozhao存储在下标4处，当存储key=xiaoliu是，hash冲突了，按照线性探测，从头开始，存储在下标2处 （黄色的是冲突或者下标已经被占用了）</p>
+<p><img src="/" class="lazyload" data-src="RackMultipart20210430-4-10ba63a_html_4b339be74eba8213.png"  alt=""></p>
+<p>拉链法：何为拉链，简单理解为链表，当key的hash冲突时，我们在冲突位置的元素上形成一个链表，通过指针互连接，当查找时，发现key冲突，顺着链表一直往下找，直到链表的尾节点，找不到则返回空，如下图：</p>
+<p><img src="/" class="lazyload" data-src="RackMultipart20210430-4-10ba63a_html_e11ce40122d342b4.png"  alt=""></p>
+<p>开放定址（线性探测）和拉链的优缺点</p>
+<p>-</p>
+<p>由上面可以看出拉链法比线性探测处理简单</p>
+<h2 id=""><a href="#" class="headerlink" title="-"></a>-</h2><p>线性探测查找是会被拉链法会更消耗时间</p>
+<h2 id="-1"><a href="#-1" class="headerlink" title="-"></a>-</h2><p>线性探测会更加容易导致扩容，而拉链不会</p>
+<h2 id="-2"><a href="#-2" class="headerlink" title="-"></a>-</h2><p>拉链存储了指针，所以空间上会比线性探测占用多一点</p>
+<h2 id="-3"><a href="#-3" class="headerlink" title="-"></a>-</h2><p>拉链是动态申请存储空间的，所以更适合链长不确定的</p>
+<p>-</p>
+<h3 id="Go-中-Map-的使用"><a href="#Go-中-Map-的使用" class="headerlink" title="Go** 中 Map 的使用**"></a><strong>Go**</strong> 中 <strong><strong>Map</strong></strong> 的使用**</h3><p>直接用代码描述，直观，简单，易理解</p>
+<p><em>// <strong>直接创建初始化一个</strong> mao</em></p>
+<p>var mapInit = map[string]string {&quot;xiaoli&quot;:&quot;湖南&quot;, &quot;xiaoliu&quot;:&quot;天津&quot;}<em>// <strong>声明一个</strong> map <strong>类型变量</strong> ,//map <strong>的</strong> key <strong>的类型是</strong> string <strong>，</strong> value <strong>的类型是</strong> string</em></p>
+<p>var mapTemp map[string]string_// <strong>使用</strong> make <strong>函数初始化这个变量</strong> , <strong>并指定大小</strong> ( <strong>也可以不指定</strong> )_</p>
+<p>mapTemp = make(map[string]string,10)<em>// <strong>存储</strong> key</em> <em>，__value</em></p>
+<p>mapTemp[&quot;xiaoming&quot;] = &quot;北京&quot;</p>
+<p>mapTemp[&quot;xiaowang&quot;]= &quot;河北&quot;<em>// <strong>根据</strong> key <strong>获取</strong> value,// <strong>如果</strong> key <strong>存在，则</strong> ok <strong>是</strong> true <strong>，否则是</strong> flase//v1 <strong>用来接收</strong> key <strong>对应的</strong> value, <strong>当</strong> ok <strong>是</strong> false <strong>时，</strong> v1 <strong>是</strong> nil</em></p>
+<p>v1,ok := mapTemp[&quot;xiaoming&quot;]</p>
+<p>fmt.Println(ok,v1)<em>// <strong>当</strong> key=xiaowang <strong>存在时打印</strong> value</em> <strong>if</strong> v2,ok := mapTemp[&quot;xiaowang&quot;]; ok{</p>
+<p>fmt.Println(v2)</p>
+<p>}<em>// <strong>遍历</strong> map, <strong>打印</strong> key <strong>和</strong> value</em> <strong>for</strong> k,v := range mapTemp{</p>
+<p>fmt.Println(k,v)</p>
+<p>}<em>// <strong>删除</strong> map <strong>中的</strong> key</em> <strong>delete</strong> (mapTemp,&quot;xiaoming&quot;)<em>// <strong>获取</strong> map__的大小</em></p>
+<p>l := len(mapTemp)</p>
+<p>fmt.Println(l)</p>
+<p>看了上面的map创建，初始化，增删改查等操作，我们发现go的api其实挺简单易学的</p>
+<h3 id="Go-中-Map-的实现原理"><a href="#Go-中-Map-的实现原理" class="headerlink" title="Go** 中 Map 的实现原理**"></a><strong>Go**</strong> 中 <strong><strong>Map</strong></strong> 的实现原理**</h3><p>知其然，更得知其所以然，会使用map了，多问问为什么，go底层map到底怎么存储呢?接下来我们一探究竟。map的源码位于 src/runtime/map.go中 笔者go的版本是1.12在go中，map同样也是数组存储的的，每个数组下标处存储的是一个bucket,这个bucket的类型见下面代码，每个bucket中可以存储8个kv键值对，当每个bucket存储的kv对到达8个之后，会通过overflow指针指向一个新的bucket，从而形成一个链表,看bmap的结构，我想大家应该很纳闷，没看见kv的结构和overflow指针啊，事实上，这两个结构体并没有显示定义，是通过指针运算进行访问的。</p>
+<p><em>//bucket __结构体定义</em> <em>b__ 就是__bucket</em></p>
+<p>type bmap{</p>
+<p><em>// tophash generally contains the top byte of the hash value</em></p>
+<p><em>// for each key in this bucket. If tophash[0] &amp;lt; minTopHash,</em></p>
+<p><em>// tophash[0] is a bucket evacuation state instead.</em></p>
+<p><em>// <strong>翻译：</strong> top hash <strong>通常包含该</strong> bucket <strong>中每个键的</strong> hash__值的高八位。</em></p>
+<p>如果tophash[0]小于mintophash，则tophash[0]为桶疏散状态 <em>//bucketCnt</em> <em>的初始值是__8</em></p>
+<p>tophash [bucketCnt]uint8</p>
+<p><em>// Followed by bucketCnt keys and then bucketCnt values.</em></p>
+<p><em>//</em> <em>NOTE:</em> <em>packing all the keys together and then all the values together makes the // code a bit more complicated than alternating key/value/key/value/… but it allows // us to eliminate padding which would be needed for, e.g., map[int64]int8.// Followed by an overflow pointer. // <strong>翻译：接下来是</strong> bucketcnt <strong>键，然后是</strong> bucketcnt__值。</em></p>
+<p>注意：将所有键打包在一起，然后将所有值打包在一起， 使得代码比交替键/值/键/值/更复杂。但它允许<em>// <strong>我们消除可能需要的填充， 例如</strong> map[int64]int8./ <strong>后面跟一个溢出指针</strong> }</em></p>
+<p>看上面代码以及注释，我们能得到bucket中存储的kv是这样的，tophash用来快速查找key值是否在该bucket中，而不同每次都通过真值进行比较；还有kv的存放，为什么不是k1v1，k2v2….. 而是k1k2…v1v2…，我们看上面的注释说的 map[int64]int8,key是int64（8个字节），value是int8（一个字节），kv的长度不同，如果按照kv格式存放，则考虑内存对齐v也会占用int64，而按照后者存储时，8个v刚好占用一个int64,从这个就可以看出go的map设计之巧妙。</p>
+<p><img src="/" class="lazyload" data-src="RackMultipart20210430-4-10ba63a_html_a66f3ee5f8c5cb5b.png"  alt=""></p>
+<p>最后我们分析一下go的整体内存结构，阅读一下map存储的源码，如下图所示，当往map中存储一个kv对时，通过k获取hash值，hash值的低八位和bucket数组长度取余，定位到在数组中的那个下标，hash值的高八位存储在bucket中的tophash中，用来快速判断key是否存在，key和value的具体值则通过指针运算存储，当一个bucket满时，通过overfolw指针链接到下一个bucket。</p>
+<p><img src="/" class="lazyload" data-src="RackMultipart20210430-4-10ba63a_html_b21f4a64a365f021.png"  alt=""></p>
+<p>go的map存储源码如下，省略了一些无关紧要的代码</p>
+<p>func <strong>mapassign</strong> (t *maptype, h *hmap, key <strong>unsafe</strong>.Pointer) <strong>unsafe</strong>.Pointer {</p>
+<p><em>// <strong>获取</strong> hash__算法</em></p>
+<p>alg := t.key.alg</p>
+<p><em>// <strong>计算</strong> hash__值</em></p>
+<p>hash := alg.hash(key, uintptr(h.hash0))</p>
+<p><em>// <strong>如果</strong> bucket__数组一开始为空，则初始化</em></p>
+<p><strong>if</strong> h.buckets == nil {</p>
+<p>h.buckets = newobject(t.bucket) <em>// newarray(t.bucket, 1)</em></p>
+<p>}</p>
+<p>again:</p>
+<p><em>//</em> <em>定位存储在哪一个 <strong>bucket</strong> 中</em></p>
+<p>bucket := hash &amp; bucketMask(h.B)</p>
+<p><em>// <strong>得到</strong> bucket__的结构体</em></p>
+<p>b := (*bmap)( <strong>unsafe</strong>.Pointer(uintptr(h.buckets) +bucket*uintptr(t.bucketsize)))</p>
+<p><em>// <strong>获取高八位</strong> hash__值</em></p>
+<p>top := tophash(hash)</p>
+<p><strong>var</strong> inserti *uint8</p>
+<p><strong>var</strong> insertk <strong>unsafe</strong>.Pointer</p>
+<p><strong>var</strong> val <strong>unsafe</strong>.Pointer</p>
+<p>bucketloop:</p>
+<p><em>//__死循环</em></p>
+<p><strong>for</strong> {</p>
+<p><em>// <strong>循环</strong> bucket <strong>中的</strong> tophash__数组</em></p>
+<p><strong>for</strong> i := uintptr(0); i &amp;lt; bucketCnt; i++ {</p>
+<p><em>// <strong>如果</strong> hash__不相等</em></p>
+<p><strong>if</strong> b.tophash[i] != top {</p>
+<p><em>//__判断是否为空，为空则插入</em></p>
+<p><strong>if**</strong> isEmpty**(b.tophash[i]) &amp;&amp; inserti == nil {</p>
+<p>inserti = &amp;b.tophash[i]</p>
+<p>insertk = <strong>add</strong> ( <strong>unsafe</strong>.Pointer(b), dataOffset+i*uintptr(t.keysize))</p>
+<p>val = <strong>add</strong> ( <strong>unsafe</strong>.Pointer(b),</p>
+<p>dataOffset+bucketCnt*uintptr(t.keysize)+i*uintptr(t.valuesize) )</p>
+<p>}</p>
+<p><em>//__插入成功，终止最外层循环</em></p>
+<p><strong>if</strong> b.tophash[i] == emptyRest {</p>
+<p><strong>break</strong> bucketloop</p>
+<p>}</p>
+<p><strong>continue</strong></p>
+<p>}</p>
+<p><em>// <strong>到这里说明高八位</strong> hash <strong>一样，获取已存在的</strong> key</em></p>
+<p>k := <strong>add</strong> ( <strong>unsafe</strong>.Pointer(b), dataOffset+i*uintptr(t.keysize))</p>
+<p><strong>if</strong> t.indirectkey() {</p>
+<p>k = *((\ <strong>*unsafe</strong>.Pointer)(k))</p>
+<p>}</p>
+<p><em>// <strong>判断两个</strong> key__是否相等，不相等就循环下一个</em></p>
+<p><strong>if</strong>!alg.equal(key, k) {</p>
+<p><strong>continue</strong></p>
+<p>}</p>
+<p><em>//</em> <em>如果相等则更新</em></p>
+<p><strong>if</strong> t.needkeyupdate() {</p>
+<p>typedmemmove(t.key, k, key)</p>
+<p>}</p>
+<p><em>// <strong>获取已存在的</strong> value</em></p>
+<p>val = <strong>add</strong> ( <strong>unsafe</strong>.Pointer(b), dataOffset+bucketCnt*uintptr(t.keysize)+i*uintptr(t.valuesize))</p>
+<p><strong>goto</strong> done</p>
+<p>}</p>
+<p><em>// <strong>如果上一个</strong> bucket <strong>没能插入，则通过</strong> overflow <strong>获取链表上的下一个</strong> bucket</em></p>
+<p>ovf := b.overflow(t)</p>
+<p><strong>if</strong> ovf == nil {</p>
+<p><strong>break</strong></p>
+<p>}</p>
+<p>b = ovf</p>
+<p>}</p>
+<p><strong>if</strong> inserti == nil {</p>
+<p><em>// all current buckets are full, allocate a new one.</em></p>
+<p>newb := h.newoverflow(t, b)</p>
+<p>inserti = &amp;newb.tophash[0]</p>
+<p>insertk = <strong>add</strong> ( <strong>unsafe</strong>.Pointer(newb), dataOffset)</p>
+<p>val = <strong>add</strong> (insertk, bucketCnt*uintptr(t.keysize))</p>
+<p>}</p>
+<p><em>// store new key/value at insert position</em></p>
+<p><strong>if</strong> t.indirectkey() {</p>
+<p>kmem := newobject(t.key)</p>
+<p>*(\ <strong>*unsafe</strong>.Pointer)(insertk) = kmem</p>
+<p>insertk = kmem</p>
+<p>}</p>
+<p><strong>if</strong> t.indirectvalue() {</p>
+<p>vmem := newobject(t.elem)</p>
+<p>*(\ <strong>*unsafe</strong>.Pointer)(val) = vmem</p>
+<p>}</p>
+<p>typedmemmove(t.key, insertk, key)</p>
+<p><em>// <strong>将高八位</strong> hash__值存储</em></p>
+<p>*inserti = top</p>
+<p>h.count++</p>
+<p><strong>return</strong> val</p>
+<p>}</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:yjw-1017@outlook.com">vio-jw</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://1py1vm.coding-pages.com/2021/01/09/map%E5%BA%95%E5%B1%82/">http://1py1vm.coding-pages.com/2021/01/09/map%E5%BA%95%E5%B1%82/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://1py1vm.coding-pages.com" target="_blank">Jw's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/golang/">golang</a></div><div class="post_share"><div class="social-share" data-image="https://wallroom.io/img/1920x1080/bg-12d9d47.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2021/01/09/%E7%BB%93%E6%9E%84%E4%BD%93/"><img class="prev_cover lazyload" data-src="https://wallroom.io/img/1920x1080/bg-0cf6fd0.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">结构体</div></div></a></div><div class="next-post pull_right"><a href="/2021/01/09/map/"><img class="next_cover lazyload" data-src="https://wallroom.io/img/1920x1080/bg-0febd3c.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">map</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2021/01/07/golang内置类型和函数/" title="golang内置类型和函数"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-119e935.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-07</div><div class="relatedPosts_title">golang内置类型和函数</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/08/Init函数和main函数/" title="Init函数和main函数"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-0d4abee.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-08</div><div class="relatedPosts_title">Init函数和main函数</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/08/命令/" title="命令"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-0cf6fd0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-08</div><div class="relatedPosts_title">命令</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/09/”基本类型“/" title="基本类型"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-0ecf3b1.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-09</div><div class="relatedPosts_title">基本类型</div></div></a></div><div class="relatedPosts_item"><a href="/2021/02/19/GMP原理和调度/" title="GMP原理和调度"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-12d9d47.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-02-19</div><div class="relatedPosts_title">GMP原理和调度</div></div></a></div><div class="relatedPosts_item"><a href="/2021/02/19/Channel/" title="Channel"><img class="relatedPosts_cover lazyload"data-src="https://wallroom.io/img/1920x1080/bg-05e3c1f.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-02-19</div><div class="relatedPosts_title">Channel</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: 'iEgNuNBCTaihslibuDwal7C5-gzGzoHsz',
+  appKey: 'm6S8TQcmY7gNtxgbvUV8dBhp',
+  placeholder: '分享你的想法吧~',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" style="background-image: url(https://wallroom.io/img/1920x1080/bg-2c050a7.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By vio-jw</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="icp"><a><img class="icp-icon" src="/img/icp.png"/><span>闽ICP备20007536</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="ribbon_piao" mobile="true" src="/js/third-party/piao.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/click_heart.js"></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script></body></html>
